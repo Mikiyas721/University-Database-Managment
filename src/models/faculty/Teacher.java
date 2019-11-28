@@ -13,6 +13,7 @@ public class Teacher extends Staff {
 
             String firstName,
             String lastName,
+            String id,
             int phoneNumber,
             String address,
             Sex sex,
@@ -23,8 +24,39 @@ public class Teacher extends Staff {
         super(firstName, lastName, id, phoneNumber, address, sex, salary, officeNumber);
         this.department_Id = department_Id;
         this.rank = rank;
-        courses_Id = courses_id;
-        sections_Id = sections_id;
+        this.courses_Id = courses_id;
+        this.sections_Id = sections_id;
     }
 
+    public int getDepartment_Id() {
+        return department_Id;
+    }
+
+    public void setDepartment_Id(int department_Id) {
+        this.department_Id = department_Id;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public int getCourses_Id() {
+        return courses_Id;
+    }
+
+    public void setCourses_Id(int courses_Id) {
+        this.courses_Id = courses_Id;
+    }
+
+    public int getSections_Id() {
+        return sections_Id;
+    }
+
+    public void setSections_Id(int sections_Id) {
+        this.sections_Id = sections_Id;
+    }
 }
