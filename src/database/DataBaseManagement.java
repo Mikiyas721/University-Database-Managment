@@ -37,8 +37,18 @@ public class DataBaseManagement {
         }
     }
 
-    public ObservableList<Student> fetchAllData() {
-        String query = "SELECT * FROM students";
+    public ObservableList<Student> fetchColumnsFromTable(String tableName, String... columns) {
+        String query = "SELECT";
+        boolean isFirst = true;
+        for (String column : columns) {
+            if (isFirst) {
+                query += column;
+                isFirst = false;
+            } else {
+                query += ("," + column);
+            }
+        }
+        query += "FROM " + tableName;
         try (
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query)
@@ -52,7 +62,7 @@ public class DataBaseManagement {
                         resultSet.getInt(4),
                         resultSet.getString(5),
                         resultSet.getString(6),
-                        Sex.makeSexObject(resultSet.getString(7)),
+                        Sex.getSexObject(resultSet.getString(7)),
                         resultSet.getInt(8)
 //                        resultSet.getInt(9),
 //                        resultSet.getInt(10)
@@ -66,45 +76,47 @@ public class DataBaseManagement {
         return null;
     }
 
-    public boolean insertData(Student student) {
-        String query = "INSERT INTO student VALUES (?,?,?,?,?,?,?,?)";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, student.getId());
-            preparedStatement.setString(2, student.getFirstName());
-            preparedStatement.setString(3, student.getLastName());
-            preparedStatement.setInt(4, student.getPhoneNumber());
-            preparedStatement.setString(5, student.getDataOfBirth());
-            preparedStatement.setString(6, student.getAddress());
-            preparedStatement.setString(7, String.format("%s", student.getSex()));
-            preparedStatement.setInt(8, student.getYear());
-
-
-            return preparedStatement.executeUpdate() == 1;
+    public boolean insertDataIntoTable(String tableName, ColumnValue... values /*Student student*/) {
+        String query = "INSERT INTO " + tableName + " VALUES (";
+        boolean isFirst = true;
+        for (ColumnValue column : values) {
+            if (isFirst) {
+                query += column.getValue();
+                isFirst = false;
+            } else {
+                query += ("," + column.getValue());
+            }
+        }
+        query += ")";
+        try (Statement statement = connection.createStatement()) {
+            return statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    public boolean createTable(String tableName) {//TODO change fix number of parameter to variable number of args
-        String query = "CREATE TABLE IF NOT EXISTS " + tableName +
-                "(id varchar(15)," +
-                "first_name varchar(15)," +
-                "last_name varchar(15)," +
-                "phone_number int," +
-                "dataOfBirth varchar(15)," +
-                "address varchar(15)," +
-                "sex varchar (6)," +
-                "acadamic_year int)";
+    public boolean createTable(String tableName, Column... columns) {
+        String query = "CREATE TABLE IF NOT EXISTS " + tableName;
+        boolean isFirst = true;
+        for (Column column : columns) {
+            if (isFirst) {
+                query += "(" + column.getColumnName() + " " + column.getSQLDataType();
+                isFirst = false;
+            } else {
+                query += "," + column.getColumnName() + " " + column.getSQLDataType();
+            }
+        }
+        query += ")";
         try (Statement statement = connection.createStatement()
         ) {
             return statement.execute(query);
-           /* if (result == 1) return true;
-            return false;*/
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
         return false;
     }
+
 }

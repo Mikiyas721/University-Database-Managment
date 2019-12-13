@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added SearchStudent Interface">
-      <change afterPath="$PROJECT_DIR$/src/database/DataBaseManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/sample/Testing.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added DatabaseManagement Class">
+      <change afterPath="$PROJECT_DIR$/src/database/Column.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/ColumnValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/University DataBase Managment System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/University DataBase Managment System.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/DataBaseManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DataBaseManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Sex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Sex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/sample/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/sample/Testing.java" afterDir="false" />
     </list>
+    <list id="f9f724e7-3e13-4755-87a0-dd11291cc7b5" name="Changelist2" comment="" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -73,37 +73,39 @@
     <session id="-2053767051">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.61" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="18" />
+          <entry key="java" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4216" />
-          <entry key="txt" value="65" />
+          <entry key="java" value="5393" />
+          <entry key="txt" value="126" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4215" />
-          <entry key="PLAIN_TEXT" value="65" />
+          <entry key="JAVA" value="5392" />
+          <entry key="PLAIN_TEXT" value="126" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -114,20 +116,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/sample/SearchStudent.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="22" selection-end-line="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="188">
+              <caret line="106" column="57" selection-start-line="106" selection-start-column="57" selection-end-line="106" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,13 +128,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="78" column="38" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+            <state relative-caret-position="98">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/Column.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding>
+                <element signature="e#137#138#0" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#222#223#0" expanded="true" />
+                <element signature="e#266#267#0" expanded="true" />
+                <element signature="e#301#302#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#380#381#0" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/database/ColumnValue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+              <folding>
+                <element signature="e#103#104#0" expanded="true" />
+                <element signature="e#137#138#0" expanded="true" />
+                <element signature="e#95#96#0" expanded="true" />
+                <element signature="e#123#124#0" expanded="true" />
+                <element signature="e#160#161#0" expanded="true" />
+                <element signature="e#194#195#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,8 +192,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/faculty/Teacher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+            <state relative-caret-position="289">
+              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding>
                 <element signature="e#807#808#0" expanded="true" />
                 <element signature="e#843#844#0" expanded="true" />
@@ -190,8 +219,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Section.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="238">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -206,10 +235,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Sex.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -247,10 +285,14 @@
         <option value="$PROJECT_DIR$/src/models/Dependants.java" />
         <option value="$PROJECT_DIR$/src/models/UserName.java" />
         <option value="$PROJECT_DIR$/src/database/DataBaseManagment.java" />
-        <option value="$PROJECT_DIR$/src/models/Sex.java" />
         <option value="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" />
-        <option value="$PROJECT_DIR$/src/ui/sample/Testing.java" />
         <option value="$PROJECT_DIR$/src/models/Student.java" />
+        <option value="$PROJECT_DIR$/src/database/Connexion.java" />
+        <option value="$PROJECT_DIR$/src/database/Columns.java" />
+        <option value="$PROJECT_DIR$/src/database/Column.java" />
+        <option value="$PROJECT_DIR$/src/database/ColumnValue.java" />
+        <option value="$PROJECT_DIR$/src/models/Sex.java" />
+        <option value="$PROJECT_DIR$/src/ui/sample/Testing.java" />
         <option value="$PROJECT_DIR$/src/database/DataBaseManagement.java" />
       </list>
     </option>
@@ -298,7 +340,20 @@
               <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
               <item name="University-Database-Managment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="University-Database-Managment" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="University-Database-Managment" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="faculty" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
@@ -322,7 +377,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576197390254" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576259430416" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java/Project/LibraryManagment/sqlite-jdbc-3.27.2.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -441,6 +496,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+      <changelist id="f9f724e7-3e13-4755-87a0-dd11291cc7b5" name="Changelist2" comment="" />
       <created>1359379246138</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -453,7 +509,9 @@
       <workItem from="1574910691998" duration="1913000" />
       <workItem from="1575480995361" duration="3223000" />
       <workItem from="1575496866417" duration="605000" />
-      <workItem from="1576189679424" duration="7529000" />
+      <workItem from="1576189679424" duration="7939000" />
+      <workItem from="1576250033185" duration="2637000" />
+      <workItem from="1576254278002" duration="5022000" />
     </task>
     <task id="LOCAL-00001" summary="Added Basic Model classes">
       <created>1573859325474</created>
@@ -490,17 +548,24 @@
       <option name="project" value="LOCAL" />
       <updated>1575484095388</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added DatabaseManagement Class">
+      <created>1576197477835</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576197477835</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20581000" />
+    <option name="totallyTimeSpent" value="28650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28214827" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -509,8 +574,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32459018" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43606558" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -548,7 +613,62 @@
     <MESSAGE value="Added Basic Model classes" />
     <MESSAGE value="Added Dependants classes" />
     <MESSAGE value="Added SearchStudent Interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SearchStudent Interface" />
+    <MESSAGE value="Added DatabaseManagement Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DatabaseManagement Class" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>91</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>106</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>109</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/DataBaseManagement.java</url>
+          <line>112</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -572,17 +692,58 @@
     <entry file="file://$PROJECT_DIR$/src/ui/sample/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/ui/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/ui/sample/sample.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
+    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="163" column="52" lean-forward="true" selection-start-line="163" selection-start-column="52" selection-end-line="163" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Dependants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/Connexion.java" />
+    <entry file="file://$PROJECT_DIR$/src/ui/sample/SearchStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/faculty/Staff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="e#2027#2028#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/faculty/Teacher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
+        <state relative-caret-position="289">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding>
             <element signature="e#807#808#0" expanded="true" />
             <element signature="e#843#844#0" expanded="true" />
@@ -606,17 +767,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Section.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        <state relative-caret-position="238">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/Search.java">
+    <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="163" column="52" lean-forward="true" selection-start-line="163" selection-start-column="52" selection-end-line="163" selection-end-column="56" />
+        <state relative-caret-position="272">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/Column.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="45" lean-forward="true" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -624,56 +799,21 @@
     <entry file="file://$PROJECT_DIR$/src/models/Sex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/sample/SearchStudent.java">
+    <entry file="file://$PROJECT_DIR$/src/database/ColumnValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="22" selection-end-line="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Dependants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="85">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
           <folding>
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/faculty/Staff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding>
-            <element signature="e#2027#2028#0" expanded="true" />
-            <element signature="e#2070#2071#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="e#613#614#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#103#104#0" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#95#96#0" expanded="true" />
+            <element signature="e#123#124#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#194#195#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,10 +825,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="78" column="38" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+        <state relative-caret-position="188">
+          <caret line="106" column="57" selection-start-line="106" selection-start-column="57" selection-end-line="106" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
