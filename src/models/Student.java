@@ -2,17 +2,17 @@ package models;
 
 public class Student {
 
+    private String id;
     private String firstName;
     private String lastName;
-    private String id;
     private int phoneNumber;
     private String dataOfBirth;
     private String address;
     private Sex sex;
     private int year;
-    private int department_id;
-    private int course_id;
-
+    /*private int department_id;
+    private int course_id;*/
+/*
     public int getDepartment_id() {
         return department_id;
     }
@@ -27,18 +27,19 @@ public class Student {
 
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
-    }
+    }*/
 
     public Student(
+            String id,
             String firstName,
             String lastName,
-            String id,
             int phoneNumber,
             String dataOfBirth,
             String address,
             Sex sex,
-            int year,
-            int department_id1, int department_id
+            int year
+//            int department_id,
+//            int course_id
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,8 +49,8 @@ public class Student {
         this.address = address;
         this.sex = sex;
         this.year = year;
-        this.department_id = department_id1;
-        this.course_id = department_id;
+       /* this.department_id = department_id;
+        this.course_id = course_id;*/
     }
 
 
@@ -117,15 +118,16 @@ public class Student {
         this.year = year;
     }
 
-    public int getDepartment() {
+    /*public int getDepartment() {
         return course_id;
     }
 
     public void setDepartment(int department_id) {
         this.course_id = department_id;
-    }
-    public String getFullName(){
-        return firstName+lastName;
+    }*/
+
+    public String getFullName() {
+        return firstName + lastName;
     }
 
 }

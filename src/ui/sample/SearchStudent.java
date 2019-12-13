@@ -1,3 +1,4 @@
+/*
 package ui.sample;
 
 import javafx.application.Application;
@@ -86,3 +87,4 @@ public class SearchStudent extends Application {
         primaryStage.show();
     }
 }
+*/
