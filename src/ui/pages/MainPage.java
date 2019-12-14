@@ -1,4 +1,4 @@
-package ui;
+package ui.pages;
 
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 
 
 public class MainPage extends Application {
+ //   Image image = new Image(getClass().getResource("class.jpeg").toExternalForm());
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         BorderPane borderPane = new BorderPane();
@@ -29,8 +33,10 @@ public class MainPage extends Application {
             primaryStage.close();
         });
 
+        /*ImageView imageView = new ImageView(image);*/
         toolBar.getItems().addAll(openAdmin, openRegistrar);
         borderPane.setTop(toolBar);
+        /*borderPane.setCenter(imageView);*/
 
 
         Rectangle2D screen = Screen.getPrimary().getBounds();

@@ -1,4 +1,4 @@
-package ui;
+package ui.pages;
 
 import database.Column;
 import database.ColumnValue;

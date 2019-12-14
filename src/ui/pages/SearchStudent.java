@@ -1,8 +1,9 @@
-package ui;
+package ui.pages;
 
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,15 +13,26 @@ import javafx.stage.Stage;
 import models.Sex;
 import models.Student;
 
+import java.sql.SQLException;
 
-public class SearchStudent {
+
+public class SearchStudent implements UpdateListener {
+    private AddStudent add;
+
+    public void showAddStudentDialog() {
+        add = new AddStudent();
+        add.setUpdateListener(this);
+    }
+
     private Application searchPage;
+    private TableView<Student> searchResults;
+    private Label message;
 
     SearchStudent() {
         searchPage = new Application() {
             @Override
             public void start(Stage primaryStage) throws Exception {
-                TableView<Student> searchResults = new TableView<>();
+                searchResults = new TableView<>();
                 VBox checkBoxs = new VBox();
                 checkBoxs.setSpacing(5);
 
@@ -33,7 +45,7 @@ public class SearchStudent {
                 search.setMinWidth(400);
                 search.setPromptText("Name");
                 search.textProperty().addListener((observable, oldValue, newValue) ->
-                        searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"))
+                        searchResults.setItems(DataBaseManagement.getInstance().fetchWithCondition("firstName", newValue))
                 );
 
 
@@ -50,11 +62,11 @@ public class SearchStudent {
                 noColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getTableView().getItems().indexOf(param.getValue()) + 1));
 
                 TableColumn<Student, String> firstNameColumn = new TableColumn<>("First Name");
-                firstNameColumn.setMinWidth(200);
+                firstNameColumn.setMinWidth(150);
                 firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
                 TableColumn<Student, String> lastNameColumn = new TableColumn<>("Last Name");
-                lastNameColumn.setMinWidth(200);
+                lastNameColumn.setMinWidth(150);
                 lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
                 TableColumn<Student, String> idColumn = new TableColumn<>("ID");
@@ -81,9 +93,41 @@ public class SearchStudent {
                 searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
                 searchResults.getColumns().addAll(noColumn, firstNameColumn, lastNameColumn, idColumn, sexColumn, yearColumn, phoneNumberColumn, dataOfBirthColumn, addressColumn);
 
+                HBox operations = new HBox();
+                Button addStudent = new Button("Add");
+                addStudent.setOnAction(event -> showAddStudentDialog());
+
+                Button editStudent = new Button("Edit");
+                editStudent.setOnAction(event -> {
+                    ObservableList<Student> selected = searchResults.getSelectionModel().getSelectedItems();
+                    if (selected.size() == 0) message.setText("Please select a book first");
+                    else if (selected.size() > 1) message.setText("You can only update one book at a time");
+                    else {
+                        selected.forEach(student ->
+                            showAddStudentDialog()
+                        );
+                      //TODO Finish using the Update method in the databaseManagment class and the Add UI
+                    }
+                });
+                Button removeStudent = new Button("Remove");
+                removeStudent.setOnAction(event -> {
+                    ObservableList<Student> selected = searchResults.getSelectionModel().getSelectedItems();
+                    selected.forEach(Student ->
+                            DataBaseManagement.getInstance().deleteRowFromTable("Student", "id=\"" + Student.getId() + "\"")
+                    );
+                    searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+                });
+                operations.getChildren().addAll(addStudent, editStudent, removeStudent);
+                operations.setSpacing(5);
+                operations.setPadding(new Insets(10));
+
+                message = new Label();
+                message.setId("messageLabel");
+                message.getStylesheets().add("./ui/css/label.css");
+
                 VBox vBox = new VBox();
                 vBox.setPadding(new Insets(5));
-                vBox.getChildren().addAll(searchRow, searchResults);
+                vBox.getChildren().addAll(searchRow, searchResults, operations, message);
 
 
                 Scene newScene = new Scene(vBox, 800, 500);
@@ -105,4 +149,8 @@ public class SearchStudent {
     }
 
 
+    @Override
+    public void updateTable() {
+        searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+    }
 }

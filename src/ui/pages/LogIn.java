@@ -1,4 +1,4 @@
-package ui;
+package ui.pages;
 
 import database.DataBaseManagement;
 import javafx.application.Application;
@@ -49,12 +49,14 @@ class LogIn {
                     } else {
                         messageLabel.setText("Please fill both the fields");
                     }
-                    if (accountMatches) {
+                    new SearchStudent();
+                    primaryStage.close();
+                    /*if (accountMatches) {
                         new SearchStudent();
                         primaryStage.close();
                     } else {
                         messageLabel.setText("Account doesn't exist.Please try again or contact your Admin");
-                    }
+                    }*/
                 });
                 HBox hBox = new HBox();
                 hBox.setPadding(new Insets(0, 0, 0, 140));
