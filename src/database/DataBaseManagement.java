@@ -37,8 +37,8 @@ public class DataBaseManagement {
         }
     }
 
-    public ObservableList<Student> fetchColumnsFromTable(String tableName, String... columns) {
-        String query = "SELECT";
+    public ResultSet fetchColumnsFromTable(String tableName, String... columns) {
+        String query = "SELECT ";
         boolean isFirst = true;
         for (String column : columns) {
             if (isFirst) {
@@ -48,12 +48,22 @@ public class DataBaseManagement {
                 query += ("," + column);
             }
         }
-        query += "FROM " + tableName;
+        query += " FROM " + tableName;
         try (
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query)
         ) {
-            ObservableList<Student> studentList = FXCollections.observableArrayList();
+            return resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ObservableList<Student> fetchColumnsFromStudent(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Student", columns);
+        ObservableList<Student> studentList = FXCollections.observableArrayList();
+        try {
             while (resultSet.next()) {
                 Student student = new Student(
                         resultSet.getString(1),
@@ -69,11 +79,10 @@ public class DataBaseManagement {
                 );
                 studentList.add(student);
             }
-            return studentList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return studentList;
     }
 
     public boolean insertDataIntoTable(String tableName, ColumnValue... values /*Student student*/) {
@@ -118,5 +127,36 @@ public class DataBaseManagement {
         }
         return false;
     }
+
+    public boolean deleteRowFromTable(String tableName, String condition) {
+        String query = "DELETE FROM " + tableName + " WHERE " + condition;
+        try (Statement statement = connection.createStatement()) {
+            return statement.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateValueInTable(String tableName, String condition, ColumnValue... values) {
+        String query = "UPDATE " + tableName + " SET ";
+        boolean isFirst = true;
+        for (ColumnValue column : values) {
+            if (isFirst) {
+                query += (column.getColumnName() + "=\"" + column.getValue() + "\"");
+                isFirst = false;
+            } else {
+                query += ("," + column.getColumnName() + "=\"" + column.getValue() + "\"");
+            }
+        }
+        query += " WHERE " + condition;
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 }
