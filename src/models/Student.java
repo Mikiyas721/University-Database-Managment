@@ -30,14 +30,16 @@ public class Student {
     }*/
 
     public Student(
-            String id,
             String firstName,
             String lastName,
-            int phoneNumber,
+            String id,
+            Sex sex,
+            int year,
             String dataOfBirth,
             String address,
-            Sex sex,
-            int year
+            int phoneNumber
+
+
 //            int department_id,
 //            int course_id
     ) {

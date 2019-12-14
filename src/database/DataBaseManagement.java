@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Sex;
 import models.*;
-
 import java.sql.*;
 
 public class DataBaseManagement {
@@ -68,10 +67,10 @@ public class DataBaseManagement {
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getInt(4),
-                        resultSet.getString(5),
+                        Sex.getSexObject(resultSet.getString(4)),
+                        resultSet.getInt(5),
                         resultSet.getString(6),
-                        Sex.getSexObject(resultSet.getString(7)),
+                        resultSet.getString(7),
                         resultSet.getInt(8)
 //                        resultSet.getInt(9),
 //                        resultSet.getInt(10)

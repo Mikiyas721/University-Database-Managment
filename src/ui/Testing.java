@@ -1,4 +1,4 @@
-package ui.sample;
+package ui;
 
 import database.Column;
 import database.ColumnValue;
@@ -8,12 +8,12 @@ import models.Sex;
 import models.Student;
 
 public class Testing {
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         if (!DataBaseManagement.getInstance().openDataBase()) System.out.println("Couldn't open Database");
-//        DataBaseManagement.getInstance().createTable("Student");
-    /*    Student student = new Student(, "Abebe", "Chala", ,
-                "12/12/1998","5 kilo", Sex.Male, 4);*/
-  /*  DataBaseManagement.getInstance().createTable("Student",
+        DataBaseManagement.getInstance().createTable("Student");
+        Student student = new Student(, "Abebe", "Chala", ,
+                "12/12/1998","5 kilo", Sex.Male, 4);
+    DataBaseManagement.getInstance().createTable("Student",
             new Column("Id","String",10),
             new Column("first_name","String",15),
             new Column("last_name","String",15),
@@ -22,8 +22,8 @@ public class Testing {
             new Column("address","String",7),
             new Column("sex","String",7),
             new Column("year","int",7)
-    );*/
-  /*  DataBaseManagement.getInstance().
+    );
+    DataBaseManagement.getInstance().
                 insertDataIntoTable("Student",
                         new ColumnValue<String>("\"ATR/4534/09\"",""),
                         new ColumnValue<String>("\"Abebe\"",""),
@@ -33,9 +33,9 @@ public class Testing {
                         new ColumnValue<String>("\"kilo\"",""),
                         new ColumnValue<String>("\"Male\"",""),
                         new ColumnValue<Integer>(4,"")
-                        );*/
-        /*DataBaseManagement.getInstance().updateValueInTable("Student", "Id = \"ATR/4534/09\"", new ColumnValue<>("Kebede", "first_name"));*/
-        /*DataBaseManagement.getInstance().deleteRowFromTable("Student","Id = \"ATR/4534/09\"");*/
+                        );
+        DataBaseManagement.getInstance().updateValueInTable("Student", "Id = \"ATR/4534/09\"", new ColumnValue<>("Kebede", "first_name"));
+        DataBaseManagement.getInstance().deleteRowFromTable("Student","Id = \"ATR/4534/09\"");
         ObservableList<Student> studentList = DataBaseManagement.getInstance().fetchColumnsFromStudent("*");
         for (Student student : studentList) {
             System.out.print(student.getId()+"  ");
@@ -48,5 +48,5 @@ public class Testing {
             System.out.println(student.getYear());
         }
         DataBaseManagement.getInstance().closeDataBase();
-    }
+    }*/
 }

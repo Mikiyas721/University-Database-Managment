@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added generic update and delete methods.Updated fetchMethod">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fixed the generic fetch method and added fetch method for the model classes">
+      <change afterPath="$PROJECT_DIR$/src/ui/LogIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/SearchStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/css/label.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/DataBaseManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DataBaseManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Sex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Sex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/sample/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Testing.java" afterDir="false" />
     </list>
     <list id="f9f724e7-3e13-4755-87a0-dd11291cc7b5" name="Changelist2" comment="" />
     <ignored path="JavaFxApplication.iws" />
@@ -76,7 +82,7 @@
     <session id="-2053767051">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -84,33 +90,40 @@
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.52" value="1" />
           <entry key="project.open.time.61" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="31" />
+          <entry key="css" value="2" />
+          <entry key="java" value="40" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="31" />
+          <entry key="CSS" value="2" />
+          <entry key="JAVA" value="40" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6892" />
-          <entry key="txt" value="302" />
+          <entry key="css" value="39" />
+          <entry key="java" value="7982" />
+          <entry key="txt" value="378" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6891" />
-          <entry key="PLAIN_TEXT" value="302" />
+          <entry key="CSS" value="39" />
+          <entry key="JAVA" value="7981" />
+          <entry key="PLAIN_TEXT" value="378" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -121,11 +134,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="195">
+              <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Department.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="45" />
+            <state relative-caret-position="180">
+              <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -146,16 +159,16 @@
         <entry file="file://$PROJECT_DIR$/src/models/Course.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
+        <entry file="file://$PROJECT_DIR$/src/ui/Testing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+            <state relative-caret-position="153">
+              <caret line="11" column="60" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,37 +177,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/faculty/Teacher.java">
+        <entry file="file://$PROJECT_DIR$/src/ui/MainPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+            <state relative-caret-position="171">
+              <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
               <folding>
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#843#844#0" expanded="true" />
-                <element signature="e#898#899#0" expanded="true" />
-                <element signature="e#948#949#0" expanded="true" />
-                <element signature="e#979#980#0" expanded="true" />
-                <element signature="e#1006#1007#0" expanded="true" />
-                <element signature="e#1046#1047#0" expanded="true" />
-                <element signature="e#1078#1079#0" expanded="true" />
-                <element signature="e#1112#1113#0" expanded="true" />
-                <element signature="e#1145#1146#0" expanded="true" />
-                <element signature="e#1194#1195#0" expanded="true" />
-                <element signature="e#1238#1239#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
-                <element signature="e#1307#1308#0" expanded="true" />
-                <element signature="e#1358#1359#0" expanded="true" />
-                <element signature="e#1404#1405#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/Section.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ui/SearchStudent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            <state relative-caret-position="133">
+              <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+              <folding>
+                <element signature="e#494#4157#0" expanded="true" />
+                <element signature="e#4156#4157#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -202,8 +204,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+            <state relative-caret-position="187">
+              <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -211,8 +213,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="-17">
               <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ui/LogIn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -220,8 +234,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Sex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="119">
+              <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -233,6 +247,7 @@
       <list>
         <option value="Enum" />
         <option value="Singleton" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -257,18 +272,25 @@
         <option value="$PROJECT_DIR$/src/models/Dependants.java" />
         <option value="$PROJECT_DIR$/src/models/UserName.java" />
         <option value="$PROJECT_DIR$/src/database/DataBaseManagment.java" />
-        <option value="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" />
-        <option value="$PROJECT_DIR$/src/models/Student.java" />
         <option value="$PROJECT_DIR$/src/database/Connexion.java" />
         <option value="$PROJECT_DIR$/src/database/Columns.java" />
         <option value="$PROJECT_DIR$/src/database/Column.java" />
-        <option value="$PROJECT_DIR$/src/models/Sex.java" />
         <option value="$PROJECT_DIR$/src/database/NameAndValue.java" />
         <option value="$PROJECT_DIR$/src/database/ColumnValue.java" />
-        <option value="$PROJECT_DIR$/src/ui/sample/Testing.java" />
         <option value="$PROJECT_DIR$/src/models/Course.java" />
         <option value="$PROJECT_DIR$/src/models/Department.java" />
+        <option value="$PROJECT_DIR$/src/ui/sample/SearchStudent.java" />
+        <option value="$PROJECT_DIR$/src/ui/sample/Testing.java" />
+        <option value="$PROJECT_DIR$/src/ui/sample/css/clickLabel.css" />
+        <option value="$PROJECT_DIR$/src/ui/sample/MainPage.java" />
+        <option value="$PROJECT_DIR$/src/ui/MainPage.java" />
+        <option value="$PROJECT_DIR$/src/ui/css/clickLabel.css" />
+        <option value="$PROJECT_DIR$/src/ui/css/label.css" />
+        <option value="$PROJECT_DIR$/src/ui/LogIn.java" />
+        <option value="$PROJECT_DIR$/src/models/Student.java" />
         <option value="$PROJECT_DIR$/src/database/DataBaseManagement.java" />
+        <option value="$PROJECT_DIR$/src/models/Sex.java" />
+        <option value="$PROJECT_DIR$/src/ui/SearchStudent.java" />
       </list>
     </option>
   </component>
@@ -280,8 +302,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1" />
-    <option name="y" value="77" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
@@ -296,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,22 +347,21 @@
               <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
               <item name="University-Database-Managment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="faculty" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="University-Database-Managment" type="b2602c69:ProjectViewProjectNode" />
               <item name="University-Database-Managment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,9 +374,10 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576282015778" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576347021044" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java/Project/LibraryManagment/sqlite-jdbc-3.27.2.1.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Java/Project/LibraryManagment" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -372,7 +395,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Testing">
+  <component name="RunManager" selected="Application.MainPage (1)">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -403,6 +426,48 @@
       </extension>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPage (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.MainPage" />
+      <module name="University DataBase Managment System" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.sample.MainPage" />
+      <module name="University DataBase Managment System" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchStudent" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.sample.SearchStudent" />
+      <module name="University DataBase Managment System" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -458,9 +523,15 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Testing" />
+      <item itemvalue="Application.SearchStudent" />
+      <item itemvalue="Application.MainPage" />
+      <item itemvalue="Application.MainPage (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainPage (1)" />
+        <item itemvalue="Application.MainPage" />
+        <item itemvalue="Application.SearchStudent" />
         <item itemvalue="Application.Testing" />
       </list>
     </recent_temporary>
@@ -488,7 +559,8 @@
       <workItem from="1576250033185" duration="2637000" />
       <workItem from="1576254278002" duration="5400000" />
       <workItem from="1576276842411" duration="5128000" />
-      <workItem from="1576293776381" duration="4389000" />
+      <workItem from="1576293776381" duration="4679000" />
+      <workItem from="1576336285622" duration="10648000" />
     </task>
     <task id="LOCAL-00001" summary="Added Basic Model classes">
       <created>1573859325474</created>
@@ -546,17 +618,24 @@
       <option name="project" value="LOCAL" />
       <updated>1576281888081</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed the generic fetch method and added fetch method for the model classes">
+      <created>1576298216420</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576298216420</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38545000" />
+    <option name="totallyTimeSpent" value="49483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.20574887" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.14674735" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -564,8 +643,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2852459" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13934426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2672131" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -608,7 +687,26 @@
     <MESSAGE value="Added DatabaseManagement Class" />
     <MESSAGE value="Made the insert and create methods generic.Started Making fetch method generic" />
     <MESSAGE value="Added generic update and delete methods.Updated fetchMethod" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added generic update and delete methods.Updated fetchMethod" />
+    <MESSAGE value="Fixed the generic fetch method and added fetch method for the model classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the generic fetch method and added fetch method for the model classes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ui/SearchStudent.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ui/SearchStudent.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -648,6 +746,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/faculty/Teacher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -680,78 +788,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Student.java">
+    <entry file="file://$PROJECT_DIR$/src/models/Department.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Sex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/sample/SearchStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/Search.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="161" column="99" selection-start-line="161" selection-start-column="78" selection-end-line="161" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/sample/Testing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Course.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Department.java">
+    <entry file="file://$PROJECT_DIR$/../../Java/Project/LibraryManagment/src/Search.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="30" column="43" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="45" />
+        <state relative-caret-position="136">
+          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/javafx-src.zip!/javafx/scene/control/Label.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/css/label.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/UserName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/Testing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="60" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/MainPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/LogIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="195">
+          <caret line="69" column="35" lean-forward="true" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Sex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/SearchStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="64" column="40" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+          <folding>
+            <element signature="e#494#4157#0" expanded="true" />
+            <element signature="e#4156#4157#0" expanded="true" />
           </folding>
         </state>
       </provider>
