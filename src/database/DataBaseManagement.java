@@ -3,7 +3,7 @@ package database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Sex;
-import models.Student;
+import models.*;
 
 import java.sql.*;
 
@@ -37,7 +37,7 @@ public class DataBaseManagement {
         }
     }
 
-    public ResultSet fetchColumnsFromTable(String tableName, String... columns) {
+    private ResultSet fetchColumnsFromTable(String tableName, String... columns) {
         String query = "SELECT ";
         boolean isFirst = true;
         for (String column : columns) {
@@ -49,15 +49,14 @@ public class DataBaseManagement {
             }
         }
         query += " FROM " + tableName;
-        try (
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(query)
-        ) {
-            return resultSet;
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 
     public ObservableList<Student> fetchColumnsFromStudent(String... columns) {
@@ -79,12 +78,113 @@ public class DataBaseManagement {
                 );
                 studentList.add(student);
             }
+            return studentList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return studentList;
+        return null;
     }
 
+    public ObservableList<Course> fetchColumnsFromCourse(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Course", columns);
+        ObservableList<Course> courseList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                Course course = new Course(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getInt(4)
+                );
+                courseList.add(course);
+            }
+            return courseList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ObservableList<Department> fetchColumnsFromDepartment(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Department", columns);
+        ObservableList<Department> departmentList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                Department department = new Department(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getInt(4),
+                        resultSet.getString(5),
+                        resultSet.getString(6)
+                        /*resultSet.getArray(7)*/
+                );
+                departmentList.add(department);
+            }
+            return departmentList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ObservableList<Section> fetchColumnsFromSection(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Section", columns);
+        ObservableList<Section> sectionList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                Section section = new Section(
+                        resultSet.getString(1).charAt(0),
+                        resultSet.getInt(2),
+                        resultSet.getInt(3),
+                        resultSet.getInt(4)
+
+                );
+                sectionList.add(section);
+            }
+            return sectionList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ObservableList<Dependants> fetchColumnsFromDependants(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Section", columns);
+        ObservableList<Dependants> sectionList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                Dependants dependants = new Dependants(
+                        resultSet.getString(1),
+                        Sex.getSexObject(resultSet.getString(2)),
+                        resultSet.getString(3),
+                        resultSet.getString(4)
+                );
+                sectionList.add(dependants);
+            }
+            return sectionList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ObservableList<UserName> fetchColumnsFromUserName(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("UserName", columns);
+        ObservableList<UserName> userNameList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                UserName userName = new UserName(
+                        resultSet.getString(1),
+                        resultSet.getString(2)
+                );
+                userNameList.add(userName);
+            }
+            return userNameList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public boolean insertDataIntoTable(String tableName, ColumnValue... values /*Student student*/) {
         String query = "INSERT INTO " + tableName + " VALUES (";
         boolean isFirst = true;

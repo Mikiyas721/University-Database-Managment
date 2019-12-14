@@ -19,7 +19,8 @@ public class Department {
             String buildingName,
             int buildingNumber,
             String officeNumber,
-            String college, List<Integer> phoneNumbers
+            String college
+            /*List<Integer> phoneNumbers*/
     ) {
         this.departmentName = departmentName;
         this.departmentCode = code;
@@ -27,7 +28,7 @@ public class Department {
         this.buildingNumber = buildingNumber;
         this.officeNumber = officeNumber;
         this.college = college;
-        this.phoneNumbers = phoneNumbers;
+        /*this.phoneNumbers = phoneNumbers;*/
     }
 
     public String getCollege() {

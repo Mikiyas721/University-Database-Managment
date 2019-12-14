@@ -5,29 +5,22 @@ public class Course {
     private String courseNumber;
     private String description;
     private double semesterHours;
-    private int department_id;
+    /*private int department_id;*/
 
     public Course(
             String name,
             String courseNumber,
             String description,
-            double semesterHours,
-            int department_id
+            double semesterHours
+            /*int department_id*/
     ) {
         this.name = name;
         this.courseNumber = courseNumber;
         this.description = description;
         this.semesterHours = semesterHours;
-        this.department_id = department_id;
+        /* this.department_id = department_id;*/
     }
 
-    public int getDepartment_id() {
-        return department_id;
-    }
-
-    public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
-    }
 
     public String getName() {
         return name;
