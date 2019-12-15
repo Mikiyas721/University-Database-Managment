@@ -18,7 +18,7 @@ public class ColumnValue<T> {
     }
 
 
-    T getValue() {
+    public T getValue() {
         return value;
     }
 

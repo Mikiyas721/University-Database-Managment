@@ -1,5 +1,6 @@
 package ui.pages;
 
+import database.ColumnValue;
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -13,48 +14,74 @@ import javafx.stage.Stage;
 import models.Sex;
 import models.Student;
 
-import java.sql.SQLException;
-
 
 public class SearchStudent implements UpdateListener {
-    private AddStudent add;
-
-    public void showAddStudentDialog() {
-        add = new AddStudent();
-        add.setUpdateListener(this);
-    }
-
+    private AddAndEditStudent add;
     private Application searchPage;
     private TableView<Student> searchResults;
     private Label message;
+    private CheckBox[] checkBoxArray = new CheckBox[8];
 
     SearchStudent() {
         searchPage = new Application() {
             @Override
             public void start(Stage primaryStage) throws Exception {
                 searchResults = new TableView<>();
-                VBox checkBoxs = new VBox();
-                checkBoxs.setSpacing(5);
+                GridPane checkBox = new GridPane();
+                checkBox.setMaxHeight(50);
+                checkBox.setVgap(5);
+                checkBox.setHgap(5);
+                checkBox.setPadding(new Insets(5));
 
-                CheckBox searchByName = new CheckBox("Name");
-                searchByName.setSelected(true);
-                CheckBox searchByID = new CheckBox("ID");
-                searchByID.setSelected(false);
+                CheckBox byFirstName = new CheckBox("First Name");
+                byFirstName.setSelected(true);
+                checkBoxArray[0] = byFirstName;
+
+                CheckBox byLastName = new CheckBox("Last Name");
+                checkBoxArray[1] = byLastName;
+
+                CheckBox byId = new CheckBox("Id");
+                checkBoxArray[2] = byId;
+
+                CheckBox bySex = new CheckBox("Sex");
+                checkBoxArray[3] = bySex;
+
+                CheckBox byDob = new CheckBox("DOB");
+                checkBoxArray[4] = byDob;
+
+                CheckBox byAddress = new CheckBox("Address");
+                checkBoxArray[5] = byAddress;
+
+                CheckBox byYear = new CheckBox("Year");
+                checkBoxArray[6] = byYear;
+
+                CheckBox byPhoneNumber = new CheckBox("Phone");
+                checkBoxArray[7] = byPhoneNumber;
+
+                initializeCheckBox();
+
+                GridPane.setConstraints(byFirstName, 1, 1);
+                GridPane.setConstraints(byLastName, 1, 2);
+                GridPane.setConstraints(byId, 2, 1);
+                GridPane.setConstraints(bySex, 2, 2);
+                GridPane.setConstraints(byDob, 3, 1);
+                GridPane.setConstraints(byYear, 3, 2);
+                GridPane.setConstraints(byPhoneNumber, 4, 1);
+                GridPane.setConstraints(byAddress, 4, 2);
+
+                checkBox.getChildren().addAll(byFirstName, byLastName, byId, bySex, byDob, byAddress, byYear, byPhoneNumber);
+
 
                 TextField search = new TextField();
                 search.setMinWidth(400);
                 search.setPromptText("Name");
                 search.textProperty().addListener((observable, oldValue, newValue) ->
-                        searchResults.setItems(DataBaseManagement.getInstance().fetchWithCondition("firstName", newValue))
+                        searchResults.setItems(DataBaseManagement.getInstance().fetchWithCondition(getComparingColumn(getSelectedCheckBox()), newValue))
                 );
-
-
-                checkBoxs.getChildren().addAll(searchByID, searchByName);
-                Button searchButton = new Button("Search");
 
                 HBox searchRow = new HBox();
                 searchRow.setSpacing(5);
-                searchRow.getChildren().addAll(search, searchButton, checkBoxs);
+                searchRow.getChildren().addAll(search, checkBox);
 
 
                 TableColumn<Student, Integer> noColumn = new TableColumn<>("#");
@@ -95,7 +122,7 @@ public class SearchStudent implements UpdateListener {
 
                 HBox operations = new HBox();
                 Button addStudent = new Button("Add");
-                addStudent.setOnAction(event -> showAddStudentDialog());
+                addStudent.setOnAction(event -> showAddStudentDialog(PageType.ADD));
 
                 Button editStudent = new Button("Edit");
                 editStudent.setOnAction(event -> {
@@ -104,9 +131,18 @@ public class SearchStudent implements UpdateListener {
                     else if (selected.size() > 1) message.setText("You can only update one book at a time");
                     else {
                         selected.forEach(student ->
-                            showAddStudentDialog()
+                                showAddStudentDialog(PageType.EDIT,
+                                        new ColumnValue<>(student.getFirstName(), ""),
+                                        new ColumnValue<>(student.getLastName(), ""),
+                                        new ColumnValue<>(student.getId(), ""),
+                                        new ColumnValue<>(student.getSex(), ""),
+                                        new ColumnValue<>(student.getDataOfBirth(), ""),
+                                        new ColumnValue<>(student.getPhoneNumber(), ""),
+                                        new ColumnValue<>(student.getAddress(), ""),
+                                        new ColumnValue<>(student.getYear(), "")
+                                )
                         );
-                      //TODO Finish using the Update method in the databaseManagment class and the Add UI
+
                     }
                 });
                 Button removeStudent = new Button("Remove");
@@ -144,10 +180,59 @@ public class SearchStudent implements UpdateListener {
         }
     }
 
+    public void showAddStudentDialog(PageType buttonType, ColumnValue... values) {
+        add = new AddAndEditStudent(buttonType);
+        if (values.length > 0) {
+            add.setMyTextFieldValue(add.getFirstName(), values[0].getValue().toString());
+            add.setMyTextFieldValue(add.getLastName(), values[1].getValue().toString());
+            add.setMyTextFieldValue(add.getID(), values[2].getValue().toString());
+            add.setMyTextFieldValue(add.getSex(), values[3].getValue().toString());
+            add.setMyTextFieldValue(add.getDob(), values[4].getValue().toString());
+            add.setMyTextFieldValue(add.getPhoneNumber(), values[5].getValue().toString());
+            add.setMyTextFieldValue(add.getAddress(), values[6].getValue().toString());
+            add.setMyTextFieldValue(add.getYear(), values[7].getValue().toString());
+        }
+        add.setUpdateListener(this);
+    }
+
     public Application getSearchPage() {
         return searchPage;
     }
 
+    public void setClickedCheckBox(CheckBox selectedCheckBox) {
+        for (CheckBox checkBox : checkBoxArray) {
+            if (checkBox == selectedCheckBox) continue;
+            checkBox.setSelected(false);
+        }
+    }
+
+    public void initializeCheckBox() {
+        for (CheckBox checkBox : checkBoxArray) {
+            checkBox.setOnMouseClicked(event -> {
+                setClickedCheckBox(checkBox);
+            });
+        }
+    }
+
+    public int getSelectedCheckBox() {
+        for (int i = 0; i < 7; i++) {
+            if (checkBoxArray[i].isSelected()) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public String getComparingColumn(int i) {
+        if (i == 1) return "lastName";
+        else if (i == 2) return "id";
+        else if (i == 3) return "sex";
+        else if (i == 4) return "dob";
+        else if (i == 5) return "address";
+        else if (i == 6) return "year";
+        else if (i == 7) return "phoneNumber";
+        else return "firstName";
+    }
 
     @Override
     public void updateTable() {
