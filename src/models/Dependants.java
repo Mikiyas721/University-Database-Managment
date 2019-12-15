@@ -1,16 +1,21 @@
 package models;
 
+import java.time.LocalDate;
+
 public class Dependants {
     private String name;
     private Sex sex;
-    private String relationShip;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
+    private String staffId;
 
-    public Dependants(String name, Sex sex, String relationShip, String dateOfBirth) {
+    public Dependants(String name,
+                      Sex sex,
+                      LocalDate dateOfBirth,
+                      String staffId) {
         this.name = name;
         this.sex = sex;
-        this.relationShip = relationShip;
         this.dateOfBirth = dateOfBirth;
+        this.staffId = staffId;
     }
 
     public String getName() {
@@ -29,19 +34,19 @@ public class Dependants {
         this.sex = sex;
     }
 
-    public String getRelationShip() {
-        return relationShip;
-    }
-
-    public void setRelationShip(String relationShip) {
-        this.relationShip = relationShip;
-    }
-
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
     }
 }

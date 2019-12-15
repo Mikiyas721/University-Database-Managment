@@ -1,60 +1,49 @@
 package models;
 
+import java.time.LocalDate;
+
 public class Student {
 
     private String id;
     private String firstName;
     private String lastName;
-    private int phoneNumber;
-    private String dataOfBirth;
-    private String address;
     private Sex sex;
     private int year;
-    /*private int department_id;
-    private int course_id;*/
-/*
-    public int getDepartment_id() {
-        return department_id;
-    }
+    private int phoneNumber;
+    private LocalDate dataOfBirth;
+    private int houseNo;
+    private String street;
+    private String subCity;
+    private String city;
+    private String departmentId;
 
-    public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
-    }
-
-    public int getCourse_id() {
-        return course_id;
-    }
-
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
-    }*/
-
-    public Student(
-            String firstName,
-            String lastName,
-            String id,
-            Sex sex,
-            int year,
-            String dataOfBirth,
-            String address,
-            int phoneNumber
-
-
-//            int department_id,
-//            int course_id
-    ) {
+    public Student(String id, String firstName,
+                   String lastName, Sex sex,
+                   int year, int phoneNumber,
+                   LocalDate dataOfBirth, int houseNo,
+                   String street, String subCity,
+                   String city, String departmentId) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = id;
-        this.phoneNumber = phoneNumber;
-        this.dataOfBirth = dataOfBirth;
-        this.address = address;
         this.sex = sex;
         this.year = year;
-       /* this.department_id = department_id;
-        this.course_id = course_id;*/
+        this.phoneNumber = phoneNumber;
+        this.dataOfBirth = dataOfBirth;
+        this.houseNo = houseNo;
+        this.street = street;
+        this.subCity = subCity;
+        this.city = city;
+        this.departmentId = departmentId;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -70,38 +59,6 @@ public class Student {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getDataOfBirth() {
-        return dataOfBirth;
-    }
-
-    public void setDataOfBirth(String dataOfBirth) {
-        this.dataOfBirth = dataOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Sex getSex() {
@@ -120,16 +77,59 @@ public class Student {
         this.year = year;
     }
 
-    /*public int getDepartment() {
-        return course_id;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setDepartment(int department_id) {
-        this.course_id = department_id;
-    }*/
-
-    public String getFullName() {
-        return firstName + lastName;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
+    public LocalDate getDataOfBirth() {
+        return dataOfBirth;
+    }
+
+    public void setDataOfBirth(LocalDate dataOfBirth) {
+        this.dataOfBirth = dataOfBirth;
+    }
+
+    public int getHouseNo() {
+        return houseNo;
+    }
+
+    public void setHouseNo(int houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getSubCity() {
+        return subCity;
+    }
+
+    public void setSubCity(String subCity) {
+        this.subCity = subCity;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 }

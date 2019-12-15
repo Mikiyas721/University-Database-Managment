@@ -1,42 +1,43 @@
 package models;
 
+import javafx.collections.ObservableList;
+
 import java.util.List;
-
+//TODO similar to what I stated in Section class.
+// The field values are retrieved from different tables
+// for phone_list we retrieve from Department_Phone table and
+// for officeNum_list we retrieve from Department_OfficeNumber table
+// for course_list we retrieve from Department_Course table
+// so we instantiate this class using the default constructor
+// instead of parametrized constructor as we will not have the values at once
 public class Department {
-
-    private String departmentName;
     private String departmentCode;
+    private String departmentName;
     private String buildingName;
     private int buildingNumber;
-    private String officeNumber;
-    private String college;
-    private List<Integer> phoneNumbers;
+    private ObservableList<Integer> officePhone;
+    private ObservableList<Integer> officeNumber;
+    private ObservableList<Course> coursesList;
 
-    public Department(
-
-            String departmentName,
-            String code,
-            String buildingName,
-            int buildingNumber,
-            String officeNumber,
-            String college
-            /*List<Integer> phoneNumbers*/
-    ) {
+ /*   public Department(String departmentCode, String departmentName,
+                      String buildingName, int buildingNumber,
+                      ObservableList<Integer> officePhone, ObservableList<Integer> officeNumber,
+                      ObservableList<Course> coursesList) {
+        this.departmentCode = departmentCode;
         this.departmentName = departmentName;
-        this.departmentCode = code;
         this.buildingName = buildingName;
         this.buildingNumber = buildingNumber;
+        this.officePhone = officePhone;
         this.officeNumber = officeNumber;
-        this.college = college;
-        /*this.phoneNumbers = phoneNumbers;*/
+        this.coursesList = coursesList;
+    }*/
+
+    public String getDepartmentCode() {
+        return departmentCode;
     }
 
-    public String getCollege() {
-        return college;
-    }
-
-    public void setCollege(String college) {
-        this.college = college;
+    public void setDepartmentCode(String departmentCode) {
+        this.departmentCode = departmentCode;
     }
 
     public String getDepartmentName() {
@@ -45,14 +46,6 @@ public class Department {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
-    }
-
-    public String getDepartmentCode() {
-        return departmentCode;
-    }
-
-    public void setDepartmentCode(String departmentCode) {
-        this.departmentCode = departmentCode;
     }
 
     public String getBuildingName() {
@@ -71,19 +64,27 @@ public class Department {
         this.buildingNumber = buildingNumber;
     }
 
-    public String getOfficeNumber() {
+    public ObservableList<Integer> getOfficePhone() {
+        return officePhone;
+    }
+
+    public void setOfficePhone(ObservableList<Integer> officePhone) {
+        this.officePhone = officePhone;
+    }
+
+    public ObservableList<Integer> getOfficeNumber() {
         return officeNumber;
     }
 
-    public void setOfficeNumber(String officeNumber) {
+    public void setOfficeNumber(ObservableList<Integer> officeNumber) {
         this.officeNumber = officeNumber;
     }
 
-    public List<Integer> getPhoneNumbers() {
-        return phoneNumbers;
+    public ObservableList<Course> getCoursesList() {
+        return coursesList;
     }
 
-    public void setPhoneNumbers(List<Integer> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    public void setCoursesList(ObservableList<Course> coursesList) {
+        this.coursesList = coursesList;
     }
 }
