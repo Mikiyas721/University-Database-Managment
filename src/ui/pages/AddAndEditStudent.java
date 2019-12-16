@@ -27,7 +27,10 @@ public class AddAndEditStudent {
     private MyTextField year;
     private MyTextField phoneNumber;
     private MyTextField dob;
-    private MyTextField address;
+    private MyTextField houseNo;
+    private MyTextField street;
+    private MyTextField subCity;
+    private MyTextField city;
 
     AddAndEditStudent(PageType buttonType) {
 
@@ -41,7 +44,11 @@ public class AddAndEditStudent {
                 year = new MyTextField("Year");
                 phoneNumber = new MyTextField("Phone");
                 dob = new MyTextField("DOB");
-                address = new MyTextField("Address");
+//                address = new MyTextField("Address");
+                houseNo = new MyTextField("HouseNo");
+                street = new MyTextField("Street");
+                subCity = new MyTextField("SubCity");
+                city = new MyTextField("City");
                 Button addButton;
                 if (buttonType == PageType.ADD) {
                     addButton = new Button("Name");
@@ -53,8 +60,11 @@ public class AddAndEditStudent {
                                 new ColumnValue<>(sex.getTextField().getText(), "sex"),
                                 new ColumnValue<>(year.getTextField().getText(), "year"),
                                 new ColumnValue<>(dob.getTextField().getText(), "dob"),
-                                new ColumnValue<>(address.getTextField().getText(), "address"),
-                                new ColumnValue<>(phoneNumber.getTextField().getText(), "phoneNumber")
+                                new ColumnValue<>(phoneNumber.getTextField().getText(), "phoneNumber"),
+                                new ColumnValue<>(houseNo.getTextField().getText(), "houseNo"),
+                                new ColumnValue<>(street.getTextField().getText(), "street"),
+                                new ColumnValue<>(subCity.getTextField().getText(), "subCity"),
+                                new ColumnValue<>(city.getTextField().getText(), "city")
 
                         );
                         updateListener.updateTable();
@@ -70,8 +80,13 @@ public class AddAndEditStudent {
                                 new ColumnValue<>(sex.getTextField().getText(), "sex"),
                                 new ColumnValue<>(year.getTextField().getText(), "year"),
                                 new ColumnValue<>(dob.getTextField().getText(), "dob"),
-                                new ColumnValue<>(address.getTextField().getText(), "address"),
-                                new ColumnValue<>(phoneNumber.getTextField().getText(), "phoneNumber")
+//                                new ColumnValue<>(address.getTextField().getText(), "address"),
+                                new ColumnValue<>(phoneNumber.getTextField().getText(), "phoneNumber"),
+                                new ColumnValue<>(houseNo.getTextField().getText(), "houseNo"),
+                                new ColumnValue<>(street.getTextField().getText(), "street"),
+                                new ColumnValue<>(subCity.getTextField().getText(), "subCity"),
+                                new ColumnValue<>(city.getTextField().getText(), "city")
+
 
                         );
                         updateListener.updateTable();
@@ -86,9 +101,13 @@ public class AddAndEditStudent {
                     iD.getTextField().clear();
                     sex.getTextField().clear();
                     year.getTextField().clear();
-                    phoneNumber.getTextField().clear();
                     dob.getTextField().clear();
-                    address.getTextField().clear();
+                    phoneNumber.getTextField().clear();
+                    houseNo.getTextField().clear();
+                    street.getTextField().clear();
+                    subCity.getTextField().clear();
+                    city.getTextField().clear();
+//                    address.getTextField().clear();
                 });
                 HBox operationButtons = new HBox();
                 operationButtons.setPadding(new Insets(20, 20, 20, 120));
@@ -105,9 +124,13 @@ public class AddAndEditStudent {
                         iD.gethBox(),
                         sex.gethBox(),
                         year.gethBox(),
-                        phoneNumber.gethBox(),
                         dob.gethBox(),
-                        address.gethBox(),
+                        phoneNumber.gethBox(),
+                        houseNo.gethBox(),
+                        street.gethBox(),
+                        subCity.gethBox(),
+                        city.gethBox(),
+//                        address.gethBox(),
                         operationButtons,
                         message);
 
@@ -153,9 +176,14 @@ public class AddAndEditStudent {
         return dob;
     }
 
-    MyTextField getAddress() {
-        return address;
-    }
+//    MyTextField getAddress() {
+//        return address;
+//    }
+
+    MyTextField getHouseNo(){return houseNo;}
+    MyTextField getStreet(){return street;}
+    MyTextField getSubCity(){return subCity;}
+    MyTextField getCity(){return city;}
 
     void setMyTextFieldValue(MyTextField myTextField, String newValue) {
         myTextField.getTextField().setText(newValue);
