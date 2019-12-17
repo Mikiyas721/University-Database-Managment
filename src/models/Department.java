@@ -3,6 +3,7 @@ package models;
 import javafx.collections.ObservableList;
 
 import java.util.List;
+
 //TODO similar to what I stated in Section class.
 // The field values are retrieved from different tables
 // for phone_list we retrieve from Department_Phone table and
@@ -19,18 +20,23 @@ public class Department {
     private ObservableList<Integer> officeNumber;
     private ObservableList<Course> coursesList;
 
- /*   public Department(String departmentCode, String departmentName,
-                      String buildingName, int buildingNumber,
-                      ObservableList<Integer> officePhone, ObservableList<Integer> officeNumber,
-                      ObservableList<Course> coursesList) {
+    public Department(
+            String departmentCode,
+            String departmentName,
+            String buildingName,
+            int buildingNumber
+            /*ObservableList<Integer> officePhone,
+            ObservableList<Integer> officeNumber,
+            ObservableList<Course> coursesList*/) {
+
         this.departmentCode = departmentCode;
         this.departmentName = departmentName;
         this.buildingName = buildingName;
         this.buildingNumber = buildingNumber;
-        this.officePhone = officePhone;
+      /*  this.officePhone = officePhone;
         this.officeNumber = officeNumber;
-        this.coursesList = coursesList;
-    }*/
+        this.coursesList = coursesList;*/
+    }
 
     public String getDepartmentCode() {
         return departmentCode;

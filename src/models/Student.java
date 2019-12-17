@@ -17,12 +17,20 @@ public class Student {
     private String city;
     private String departmentId;
 
-    public Student(String id, String firstName,
-                   String lastName, Sex sex,
-                   int year, int phoneNumber,
-                   LocalDate dataOfBirth, int houseNo,
-                   String street, String subCity,
-                   String city, String departmentId) {
+    public Student(
+            String id,
+            String firstName,
+            String lastName,
+            Sex sex,
+            int year,
+            int phoneNumber,
+            LocalDate dataOfBirth,
+            int houseNo,
+            String street,
+            String subCity,
+            String city,
+            String departmentId) {
+
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -132,4 +140,14 @@ public class Student {
     public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
     }
+
+    public String getLocalDateString() {
+        return dataOfBirth.getDayOfMonth() + "/" + dataOfBirth.getMonthValue() + "/" + dataOfBirth.getYear();
+    }
+
+    public static LocalDate getLocalDateFromString(String dateString) {
+        String[] dateArray = dateString.split("/");
+        return LocalDate.of(Integer.parseInt(dateArray[2]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[0]));
+    }
+
 }

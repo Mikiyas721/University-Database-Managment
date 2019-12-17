@@ -3,6 +3,7 @@ package models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.faculty.Teacher;
+
 //TODO when constructing object of Section class
 // Step 1: Retrieve the fields sectionCode and year from the Section table
 // Step 2: Retrieve courseList and teachersList from Section_Course table and Section_Teacher table
@@ -16,15 +17,16 @@ public class Section {
     private ObservableList<Course> courseList;
     private ObservableList<Teacher> teachersList;
 
-   /* public Section(char sectionCode,
-                   int year,
-                   ObservableList<Course> courseList,
-                   ObservableList<Teacher> teachersList) {
+    public Section(
+            char sectionCode,
+            int year
+            /*ObservableList<Course> courseList,
+            ObservableList<Teacher> teachersList*/) {
         this.sectionCode = sectionCode;
         this.year = year;
-        this.courseList = courseList;
-        this.teachersList = teachersList;
-    }*/
+      /*  this.courseList = courseList;
+        this.teachersList = teachersList;*/
+    }
 
     public char getSectionCode() {
         return sectionCode;

@@ -71,11 +71,13 @@ public class DataBaseManagement {
                         resultSet.getString(3),
                         Sex.getSexObject(resultSet.getString(4)),
                         resultSet.getInt(5),
-                        resultSet.getString(6),
-                        resultSet.getString(7),
-                        resultSet.getInt(8)
-//                        resultSet.getInt(9),
-//                        resultSet.getInt(10)
+                        resultSet.getInt(6),
+                        Student.getLocalDateFromString(resultSet.getString(7)),
+                        resultSet.getInt(8),
+                        resultSet.getString(9),
+                        resultSet.getString(10),
+                        resultSet.getString(11),
+                        resultSet.getString(12)
                 );
                 studentList.add(student);
             }
@@ -126,10 +128,10 @@ public class DataBaseManagement {
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getInt(4),
-                        resultSet.getString(5),
-                        resultSet.getString(6)
-                        /*resultSet.getArray(7)*/
+                        resultSet.getInt(4)
+                        /*resultSet.getString(5),
+                        resultSet.getString(6),
+                        resultSet.getArray(7)*/
                 );
                 departmentList.add(department);
             }
@@ -147,9 +149,9 @@ public class DataBaseManagement {
             while (resultSet.next()) {
                 Section section = new Section(
                         resultSet.getString(1).charAt(0),
-                        resultSet.getInt(2),
+                        resultSet.getInt(2)/*,
                         resultSet.getInt(3),
-                        resultSet.getInt(4)
+                        resultSet.getInt(4)*/
 
                 );
                 sectionList.add(section);
@@ -169,7 +171,7 @@ public class DataBaseManagement {
                 Dependants dependants = new Dependants(
                         resultSet.getString(1),
                         Sex.getSexObject(resultSet.getString(2)),
-                        resultSet.getString(3),
+                        Student.getLocalDateFromString(resultSet.getString(3)),
                         resultSet.getString(4)
                 );
                 sectionList.add(dependants);
