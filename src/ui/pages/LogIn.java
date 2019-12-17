@@ -37,14 +37,19 @@ class LogIn {
                     String passwordinput = passWordField.getText();
 
                     if (usernameinput != null && passwordinput != null) {
-                        DataBaseManagement.getInstance().openDataBase();
-                        ObservableList<UserName> userNames = DataBaseManagement.getInstance().fetchColumnsFromUserName("*");
-                        for (UserName accounts : userNames) {
-                            if (accounts.getName().equals(usernameinput) && accounts.getPassword().equals(passwordinput)) {
-                                accountMatches = true;
-                                break;
+                        try {
+                            DataBaseManagement.getInstance().openDataBase();
+                            ObservableList<UserName> userNames = DataBaseManagement.getInstance().fetchColumnsFromUserName("*");
+                            for (UserName accounts : userNames) {
+                                if (accounts.getName().equals(usernameinput) && accounts.getPassword().equals(passwordinput)) {
+                                    accountMatches = true;
+                                    break;
+                                }
                             }
+                        } catch (NullPointerException e1) {
+                            messageLabel.setText("Please Ask your Admin to register you first");
                         }
+
 
                     } else {
                         messageLabel.setText("Please fill both the fields");

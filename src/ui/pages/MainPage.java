@@ -1,5 +1,6 @@
 package ui.pages;
 
+import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -11,8 +12,7 @@ import javafx.stage.Stage;
 
 
 public class MainPage extends Application {
- //   Image image = new Image(getClass().getResource("class.jpeg").toExternalForm());
-
+    //   Image image = new Image(getClass().getResource("class.jpeg").toExternalForm());
 
 
     @Override
@@ -38,7 +38,8 @@ public class MainPage extends Application {
         borderPane.setTop(toolBar);
         /*borderPane.setCenter(imageView);*/
 
-
+        DataBaseManagement.getInstance().openDataBase();
+        
         Rectangle2D screen = Screen.getPrimary().getBounds();
         Scene scene = new Scene(borderPane, screen.getWidth(), screen.getHeight());
         primaryStage.setScene(scene);
