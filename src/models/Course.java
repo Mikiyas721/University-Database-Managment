@@ -1,33 +1,19 @@
 package models;
 
 public class Course {
-    private String name;
     private String courseNumber;
+    private String courseName;
     private String description;
-    private double semesterHours;
-    /*private int department_id;*/
+    private double creditHour;
 
-    public Course(
-            String name,
-            String courseNumber,
-            String description,
-            double semesterHours
-            /*int department_id*/
-    ) {
-        this.name = name;
+    public Course(String courseNumber,
+                  String courseName,
+                  String description,
+                  double creditHour) {
         this.courseNumber = courseNumber;
+        this.courseName = courseName;
         this.description = description;
-        this.semesterHours = semesterHours;
-        /* this.department_id = department_id;*/
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.creditHour = creditHour;
     }
 
     public String getCourseNumber() {
@@ -38,6 +24,14 @@ public class Course {
         this.courseNumber = courseNumber;
     }
 
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -46,11 +40,11 @@ public class Course {
         this.description = description;
     }
 
-    public double getSemesterHours() {
-        return semesterHours;
+    public double getCreditHour() {
+        return creditHour;
     }
 
-    public void setSemesterHours(double semesterHours) {
-        this.semesterHours = semesterHours;
+    public void setCreditHour(double creditHour) {
+        this.creditHour = creditHour;
     }
 }

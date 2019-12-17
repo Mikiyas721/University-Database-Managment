@@ -1,5 +1,6 @@
 package ui.pages;
 
+import database.Column;
 import database.ColumnValue;
 import database.DataBaseManagement;
 import javafx.application.Application;
@@ -123,6 +124,12 @@ public class SearchStudent implements UpdateListener {
                 HBox operations = new HBox();
                 Button addStudent = new Button("Add");
                 addStudent.setOnAction(event -> showAddStudentDialog(PageType.ADD));
+/*
+                private int houseNo;
+                private String street;
+                private String subCity;
+                private String city;
+                private String departmentId;*/
 
                 Button editStudent = new Button("Edit");
                 editStudent.setOnAction(event -> {
@@ -138,7 +145,11 @@ public class SearchStudent implements UpdateListener {
                                         new ColumnValue<>(student.getSex(), ""),
                                         new ColumnValue<>(student.getDataOfBirth(), ""),
                                         new ColumnValue<>(student.getPhoneNumber(), ""),
-                                        new ColumnValue<>(student.getAddress(), ""),
+//                                        new ColumnValue<>(student.getAddress(), ""),
+                                        new ColumnValue<>(student.getHouseNo(), ""),
+                                        new ColumnValue<>(student.getStreet(), ""),
+                                        new ColumnValue<>(student.getSubCity(), ""),
+                                        new ColumnValue<>(student.getCity(), ""),
                                         new ColumnValue<>(student.getYear(), "")
                                 )
                         );
@@ -179,6 +190,10 @@ public class SearchStudent implements UpdateListener {
             e.printStackTrace();
         }
     }
+    /* new ColumnValue<>(student.getHouseNo(), ""),
+             new ColumnValue<>(student.getStreet(), ""),
+             new ColumnValue<>(student.getSubCity(), ""),
+             new ColumnValue<>(student.getCity(), ""),*/
 
     public void showAddStudentDialog(PageType buttonType, ColumnValue... values) {
         add = new AddAndEditStudent(buttonType);
@@ -189,8 +204,13 @@ public class SearchStudent implements UpdateListener {
             add.setMyTextFieldValue(add.getSex(), values[3].getValue().toString());
             add.setMyTextFieldValue(add.getDob(), values[4].getValue().toString());
             add.setMyTextFieldValue(add.getPhoneNumber(), values[5].getValue().toString());
-            add.setMyTextFieldValue(add.getAddress(), values[6].getValue().toString());
-            add.setMyTextFieldValue(add.getYear(), values[7].getValue().toString());
+            add.setMyTextFieldValue(add.getYear(), values[6].getValue().toString());
+//            add.setMyTextFieldValue(add.getAddress(), values[6].getValue().toString());
+            add.setMyTextFieldValue(add.getHouseNo(), values[7].getValue().toString());
+            add.setMyTextFieldValue(add.getStreet(),values[8].getValue().toString());
+            add.setMyTextFieldValue(add.getSubCity(), values[9].getValue().toString());
+            add.setMyTextFieldValue(add.getCity(), values[10].getValue().toString());
+
         }
         add.setUpdateListener(this);
     }

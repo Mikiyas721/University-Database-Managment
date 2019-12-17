@@ -1,31 +1,37 @@
 package models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import models.faculty.Teacher;
+//TODO when constructing object of Section class
+// Step 1: Retrieve the fields sectionCode and year from the Section table
+// Step 2: Retrieve courseList and teachersList from Section_Course table and Section_Teacher table
+// So we obviously will need to use the setter methods because we don't have all the fields at once
+// to pass to the constructor... that's why I have commented out the constructor
 public class Section {
 
-    private char SectionCode;
+    private char sectionCode;
     private int year;
-    private int course_Id;
-    private int teacher_Id;
 
+    private ObservableList<Course> courseList;
+    private ObservableList<Teacher> teachersList;
 
-    public Section(
-            char sectionCode,
-            int year,
-            int course_Id,
-            int teacher_Id
-    ) {
-        SectionCode = sectionCode;
+   /* public Section(char sectionCode,
+                   int year,
+                   ObservableList<Course> courseList,
+                   ObservableList<Teacher> teachersList) {
+        this.sectionCode = sectionCode;
         this.year = year;
-        this.course_Id = course_Id;
-        this.teacher_Id = teacher_Id;
-    }
+        this.courseList = courseList;
+        this.teachersList = teachersList;
+    }*/
 
     public char getSectionCode() {
-        return SectionCode;
+        return sectionCode;
     }
 
     public void setSectionCode(char sectionCode) {
-        SectionCode = sectionCode;
+        this.sectionCode = sectionCode;
     }
 
     public int getYear() {
@@ -36,22 +42,19 @@ public class Section {
         this.year = year;
     }
 
-    public int getCourse_Id() {
-        return course_Id;
+    public ObservableList<Course> getCourseList() {
+        return courseList;
     }
 
-    public void setCourse_Id(int course_Id) {
-        this.course_Id = course_Id;
+    public void setCourseList(ObservableList<Course> courseList) {
+        this.courseList = courseList;
     }
 
-    public int getTeacher_Id() {
-        return teacher_Id;
+    public ObservableList<Teacher> getTeachersList() {
+        return teachersList;
     }
 
-    public void setTeacher_Id(int teacher_Id) {
-        this.teacher_Id = teacher_Id;
+    public void setTeachersList(ObservableList<Teacher> teachersList) {
+        this.teachersList = teachersList;
     }
-
-
-
 }
