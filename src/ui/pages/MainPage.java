@@ -30,6 +30,7 @@ public class MainPage extends Application {
         Label openAdmin = new Label("Admin");
         openAdmin.getStylesheets().add("ui/css/label.css");
         openAdmin.setOnMouseClicked(event -> {
+            new AdminPage();
             primaryStage.close();
         });
 
@@ -39,7 +40,7 @@ public class MainPage extends Application {
         /*borderPane.setCenter(imageView);*/
 
         DataBaseManagement.getInstance().openDataBase();
-        
+
         Rectangle2D screen = Screen.getPrimary().getBounds();
         Scene scene = new Scene(borderPane, screen.getWidth(), screen.getHeight());
         primaryStage.setScene(scene);

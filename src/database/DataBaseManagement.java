@@ -56,7 +56,7 @@ public class DataBaseManagement {
             Statement statement = connection.createStatement();
             return statement.executeQuery(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error: From the fetch Columns Tables");
             return null;
         }
     }

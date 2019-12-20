@@ -21,6 +21,7 @@ class LogIn {
             public void start(Stage primaryStage) throws Exception {
                 messageLabel.setId("messageLabel");
                 messageLabel.getStylesheets().add("ui/css/label.css");
+                messageLabel.setMinWidth(300);
                 Label userName = new Label("User Name");
 
                 TextField userNameField = new TextField();
@@ -46,22 +47,17 @@ class LogIn {
                                     break;
                                 }
                             }
-                        } catch (NullPointerException e1) {
+                           /* if (accountMatches){
+                                new SearchStudent();
+                                primaryStage.close();
+                            }*/
+                        } catch (Exception exception) {
                             messageLabel.setText("Please Ask your Admin to register you first");
                         }
-
-
                     } else {
                         messageLabel.setText("Please fill both the fields");
                     }
-                    new SearchStudent();
-                    primaryStage.close();
-                    /*if (accountMatches) {
-                        new SearchStudent();
-                        primaryStage.close();
-                    } else {
-                        messageLabel.setText("Account doesn't exist.Please try again or contact your Admin");
-                    }*/
+
                 });
                 HBox hBox = new HBox();
                 hBox.setPadding(new Insets(0, 0, 0, 140));
@@ -79,7 +75,7 @@ class LogIn {
                 GridPane.setConstraints(passWord, 0, 1);
                 GridPane.setConstraints(passWordField, 1, 1);
                 GridPane.setConstraints(hBox, 1, 2);
-                GridPane.setConstraints(messageLabel, 1, 4, 2, 1);
+                GridPane.setConstraints(messageLabel, 0, 4, 2, 2);
 
 
                 gridPane.getChildren().addAll(userName, userNameField, passWord, passWordField, hBox, messageLabel);

@@ -1,6 +1,19 @@
 .label:hover {
     -fx-text-fill: #006699;
 }
-#messageLabel{
+
+#messageLabel {
     -fx-text-fill: red;
+}
+
+.transparentButton {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: 0;
+    -fx-text-fill: blue;
+}
+.submitButton{
+    -fx-background-color: #2E81EC;
+    -fx-text-fill: white;
 }

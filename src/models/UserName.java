@@ -1,5 +1,9 @@
 package models;
 
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class UserName {
 
     private String name;
@@ -31,12 +35,34 @@ public class UserName {
         return false;
     }
 
-    public boolean validatePassword(String newPassword) {
-        boolean check = true;
-        if (newPassword.length() < 8) check = false;
-        else if (newPassword.matches(this.name)) check = false;
-        //Todo add more criteria to make password strong
-            return check;
+    public static boolean validatePassword(String newPassword) {
+        char[] password = newPassword.toCharArray();
+        boolean hasLower = false;
+        boolean hasUpper = false;
+        boolean hasDigit = false;
+
+        for (char c : password) {
+            if (Character.isLowerCase(c)) hasLower = true;
+            else if (Character.isDigit(c)) hasUpper = true;
+            else if (Character.isUpperCase(c)) hasDigit = true;
+        }
+        return hasUpper && hasLower && hasDigit && newPassword.length() > 7;
+    }
+
+    public static boolean validateEmail(String email) {
+        return email.contains("@") && email.contains(".com") && email.length() > 10;
+    }
+
+    public static boolean validateName(String name) {
+        return Character.isUpperCase(name.charAt(0));
+    }
+
+    public static String correctName(String name) {
+        char[] nameArray = name.toCharArray();
+        if (!Character.isUpperCase(nameArray[0])) {
+            nameArray[0] = Character.toUpperCase(nameArray[0]);
+        }
+        return Arrays.toString(nameArray);
     }
 
 }
