@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 public class RegistrarInputs {
     private TextField firstNameField;
@@ -40,6 +42,27 @@ public class RegistrarInputs {
         return userNameField.getText();
     }
 
+    public void setFirstName(String firstName) {
+        firstNameField.setText(firstName);
+    }
+
+    public void setLastName(String lastName) {
+        lastNameField.setText(lastName);
+    }
+
+    public void setEmail(String email) {
+        emailField.setText(email);
+    }
+
+    public void setUserName(String userName) {
+        userNameField.setText(userName);
+    }
+
+    public void setPassWord(String password) {
+        passWordField.setText(password);
+    }
+
+
     public String getPassword() {
         return passWordField.getText();
     }
@@ -57,7 +80,7 @@ public class RegistrarInputs {
         gridPane.setMaxWidth(350);
 
         Label sectionWork = new Label(title);
-        sectionWork.setId("title");
+        sectionWork.getStyleClass().add("title");
         sectionWork.getStylesheets().add("./ui/css/label.css");
 
         Label firstNameLabel = new Label("First Name");
@@ -87,12 +110,28 @@ public class RegistrarInputs {
 
 
         Button submitButton = new Button(buttonLabel);
-        submitButton.getStyleClass().add("submitButton");
+        submitButton.setId("submitButton");
         submitButton.getStylesheets().add("./ui/css/label.css");
         submitButton.setOnAction(onSubmitClicked);
         submitButton.setAlignment(Pos.BASELINE_RIGHT);
 
-        GridPane.setConstraints(sectionWork, 0, 0,2,1);
+        Button clearButton = new Button("Clear");
+        clearButton.setId("clearButton");
+        clearButton.getStylesheets().add("./ui/css/label.css");
+        clearButton.setOnAction(event -> {
+            firstNameField.setText("");
+            lastNameField.setText("");
+            emailField.setText("");
+            userNameField.setText("");
+            passWordField.setText("");
+            messageLabel.setText("");
+        });
+        HBox hBox = new HBox(5, clearButton, submitButton);
+
+        hBox.setMaxWidth(105);
+
+
+        GridPane.setConstraints(sectionWork, 0, 0, 2, 1);
         GridPane.setConstraints(firstNameLabel, 0, 1);
         GridPane.setConstraints(firstNameField, 1, 1);
         GridPane.setConstraints(lastNameLabel, 0, 2);
@@ -103,11 +142,12 @@ public class RegistrarInputs {
         GridPane.setConstraints(userNameField, 1, 4);
         GridPane.setConstraints(passwordLabel, 0, 5);
         GridPane.setConstraints(passWordField, 1, 5);
-        GridPane.setConstraints(submitButton, 1, 6);
-        GridPane.setHalignment(submitButton, HPos.RIGHT);
+        GridPane.setConstraints(hBox, 1, 6);
+        GridPane.setHalignment(hBox, HPos.RIGHT);
+
         GridPane.setConstraints(messageLabel, 0, 7, 2, 2);
 
-        gridPane.getChildren().addAll(sectionWork, firstNameLabel, firstNameField, lastNameLabel, lastNameField, emailLabel, emailField, userNameLabel, userNameField, passwordLabel, passWordField, submitButton, messageLabel);
+        gridPane.getChildren().addAll(sectionWork, firstNameLabel, firstNameField, lastNameLabel, lastNameField, emailLabel, emailField, userNameLabel, userNameField, passwordLabel, passWordField, hBox, messageLabel);
 
     }
 }

@@ -5,6 +5,7 @@ import database.ColumnValue;
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.Scene;
@@ -22,6 +23,8 @@ public class AdminPage {
     private BorderPane window;
     private RegistrarInputs addNew;
     private RegistrarInputs editExisting;
+    private TableView<RegistrarAccount> searchResults;
+    private String userName = null;
 
     public AdminPage() {
         Application adminPage = new Application() {
@@ -84,23 +87,73 @@ public class AdminPage {
                         new ColumnValue(addNew.getUserName(), "username"),
                         new ColumnValue(addNew.getPassword(), "password"));
             }
+            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
 
-        }, null));
+        }, event -> {
+            DataBaseManagement.getInstance().updateValueInTable("RegistrarAccount",
+                    "username=\"" + userName + "\"",
+                    new ColumnValue<>(editExisting.getFirstName(), "firstName"),
+                    new ColumnValue<>(editExisting.getLastName(), "lastName"),
+                    new ColumnValue<>(editExisting.getEmail(), "email"),
+                    new ColumnValue<>(editExisting.getUserName(), "username"),
+                    new ColumnValue<>(editExisting.getPassword(), "password")
+
+                    );
+            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
+        }, event -> {
+            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModel().getSelectedItems();
+            selected.forEach(registrarAccount -> {
+                editExisting.setFirstName(registrarAccount.getFirstName());
+                editExisting.setLastName(registrarAccount.getLastName());
+                editExisting.setEmail(registrarAccount.getEmail());
+                editExisting.setUserName(registrarAccount.getUserName());
+                editExisting.setPassWord(registrarAccount.getPassword());
+                userName = editExisting.getUserName();
+            });
+        }, event -> {
+            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModel().getSelectedItems();
+            selected.forEach(account -> DataBaseManagement.getInstance().deleteRowFromTable("RegistrarAccount",
+                    "id=\"" + account.getUserName() + "\""));
+            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
+        }));
         window.setCenter(getTableView());
     }
 
-    private VBox getManipulationPage(EventHandler<ActionEvent> onSubmitClicked, EventHandler<ActionEvent> onEditClicked) {
+    private VBox getManipulationPage(EventHandler<ActionEvent> onSubmitClicked,
+                                     EventHandler<ActionEvent> onEditClicked,
+                                     EventHandler<ActionEvent> onLoadClicked,
+                                     EventHandler<ActionEvent> onDeleteClicked) {
         VBox mainBox = new VBox(5);
         addNew = new RegistrarInputs("Submit", "Add New Account", onSubmitClicked);
         editExisting = new RegistrarInputs("Edit", "Edit the Selected Account", onEditClicked);
 
-        mainBox.getChildren().addAll(addNew.getGridPane(), new Separator(), editExisting.getGridPane(), new Separator());
+        VBox deleteAccount = new VBox(5);
+        deleteAccount.setPadding(new Insets(10));
+
+        Label label = new Label("Load or Remove Account");
+        label.getStyleClass().add("title");
+        label.getStylesheets().add("./ui/css/label.css");
+
+        Button loadButton = new Button("Load");
+        loadButton.setId("loadButton");
+        loadButton.getStylesheets().add("./ui/css/label.css");
+        loadButton.setOnAction(onLoadClicked);
+
+        Button deleteButton = new Button("Delete");
+        deleteButton.setId("deleteButton");
+        deleteButton.getStylesheets().add("./ui/css/label.css");
+        deleteButton.setOnAction(onDeleteClicked);
+
+
+        deleteAccount.getChildren().addAll(label, loadButton, deleteButton);
+
+        mainBox.getChildren().addAll(addNew.getGridPane(), new Separator(), editExisting.getGridPane(), new Separator(), deleteAccount);
         return mainBox;
 
     }
 
     public TableView getTableView() {
-        TableView<RegistrarAccount> searchResults = new TableView<>();
+        searchResults = new TableView<>();
 
         TableColumn<RegistrarAccount, Integer> noColumn = new TableColumn<>("#");
         noColumn.setMaxWidth(30);

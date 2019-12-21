@@ -93,7 +93,6 @@ public class AddAndEditStudent {
                     });
                 }
 
-
                 Button cancelButton = new Button("Clear");
                 cancelButton.setOnAction(e -> {
                     firstName.getTextField().clear();
