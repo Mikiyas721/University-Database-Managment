@@ -1,4 +1,4 @@
-package ui.pages;
+package ui.pages.customer;
 
 import database.DataBaseManagement;
 import javafx.application.Application;
@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import models.UserName;
+import models.Account.Account;
 
-class LogIn {
+public class LogIn {
     private Application login;
 
-    LogIn() {
+    public LogIn() {
         login = new Application() {
             Label messageLabel = new Label();
 
@@ -40,9 +40,9 @@ class LogIn {
                     if (usernameinput != null && passwordinput != null) {
                         try {
                             DataBaseManagement.getInstance().openDataBase();
-                            ObservableList<UserName> userNames = DataBaseManagement.getInstance().fetchColumnsFromUserName("*");
-                            for (UserName accounts : userNames) {
-                                if (accounts.getName().equals(usernameinput) && accounts.getPassword().equals(passwordinput)) {
+                            ObservableList<Account> userNames = DataBaseManagement.getInstance().fetchColumnsFromUserName("*");
+                            for (Account accounts : userNames) {
+                                if (accounts.getUserName().equals(usernameinput) && accounts.getPassword().equals(passwordinput)) {
                                     accountMatches = true;
                                     break;
                                 }

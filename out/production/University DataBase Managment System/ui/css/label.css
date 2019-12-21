@@ -13,7 +13,12 @@
     -fx-background-color: 0;
     -fx-text-fill: blue;
 }
-.submitButton{
+
+.submitButton {
     -fx-background-color: #2E81EC;
     -fx-text-fill: white;
+}
+
+#title {
+    -fx-text-fill: grey;
 }

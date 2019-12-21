@@ -9,6 +9,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import ui.pages.admin.AdminPage;
+import ui.pages.customer.LogIn;
 
 
 public class MainPage extends Application {

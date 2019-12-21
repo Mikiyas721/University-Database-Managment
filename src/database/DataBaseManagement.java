@@ -2,6 +2,8 @@ package database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import models.Account.Account;
+import models.Account.RegistrarAccount;
 import models.Sex;
 import models.*;
 
@@ -61,7 +63,7 @@ public class DataBaseManagement {
         }
     }
 
-    private ObservableList<Student> makeObservable(ResultSet resultSet) {
+    private ObservableList<Student> makeStudentObservable(ResultSet resultSet) {
         ObservableList<Student> studentList = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {
@@ -88,15 +90,39 @@ public class DataBaseManagement {
         return null;
 
     }
+    private ObservableList<RegistrarAccount> makeRegistrarAccountObservable(ResultSet resultSet) {
+        ObservableList<RegistrarAccount> accountList = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                RegistrarAccount registrarAccount = new RegistrarAccount(
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5)
+                );
+                accountList.add(registrarAccount);
+            }
+            return accountList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public ObservableList<Student> fetchWithCondition(String comparingColumn, String newValue) {
         ResultSet resultSet = fetchColumnsFromTable("Student", comparingColumn, newValue, "*");
-        return makeObservable(resultSet);
+        return makeStudentObservable(resultSet);
     }
 
     public ObservableList<Student> fetchColumnsFromStudent(String... columns) {
         ResultSet resultSet = fetchColumnsFromTable("Student", "", "", columns);
-        return makeObservable(resultSet);
+        return makeStudentObservable(resultSet);
+    }
+
+    public ObservableList<RegistrarAccount> fetchColumnsFromRegistrarAccount(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("RegistrarAccount", "", "", columns);
+        return makeRegistrarAccountObservable(resultSet);
     }
 
     public ObservableList<Course> fetchColumnsFromCourse(String... columns) {
@@ -183,18 +209,18 @@ public class DataBaseManagement {
         return null;
     }
 
-    public ObservableList<UserName> fetchColumnsFromUserName(String... columns) {
-        ResultSet resultSet = fetchColumnsFromTable("UserName", "", "", columns);
-        ObservableList<UserName> userNameList = FXCollections.observableArrayList();
+    public ObservableList<Account> fetchColumnsFromUserName(String... columns) {
+        ResultSet resultSet = fetchColumnsFromTable("Account", "", "", columns);
+        ObservableList<Account> accountList = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {
-                UserName userName = new UserName(
+                Account account = new Account(
                         resultSet.getString(1),
                         resultSet.getString(2)
                 );
-                userNameList.add(userName);
+                accountList.add(account);
             }
-            return userNameList;
+            return accountList;
         } catch (SQLException e) {
             e.printStackTrace();
         }

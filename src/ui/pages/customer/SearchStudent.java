@@ -1,6 +1,5 @@
-package ui.pages;
+package ui.pages.customer;
 
-import database.Column;
 import database.ColumnValue;
 import database.DataBaseManagement;
 import javafx.application.Application;

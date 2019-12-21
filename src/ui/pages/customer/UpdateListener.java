@@ -1,4 +1,4 @@
-package ui.pages;
+package ui.pages.customer;
 
 public interface UpdateListener {
     public void updateTable();
