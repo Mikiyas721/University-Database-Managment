@@ -1,4 +1,4 @@
-package database;
+package assistingclasses;
 
 public class ColumnValue<T> {
     private String columnName;

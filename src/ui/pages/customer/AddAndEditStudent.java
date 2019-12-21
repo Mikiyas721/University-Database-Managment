@@ -1,6 +1,6 @@
 package ui.pages.customer;
 
-import database.ColumnValue;
+import assistingclasses.ColumnValue;
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.geometry.Insets;

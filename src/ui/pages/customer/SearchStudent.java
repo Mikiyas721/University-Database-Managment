@@ -1,6 +1,7 @@
 package ui.pages.customer;
 
-import database.ColumnValue;
+import assistingclasses.ColumnValue;
+import assistingclasses.MyTableColumn;
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -13,12 +14,13 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Sex;
 import models.Student;
+import ui.customWidget.MyTableView;
 
 
 public class SearchStudent implements UpdateListener {
     private AddAndEditStudent add;
     private Application searchPage;
-    private TableView<Student> searchResults;
+    private MyTableView<Student> searchResults;
     private Label message;
     private CheckBox[] checkBoxArray = new CheckBox[8];
 
@@ -26,7 +28,7 @@ public class SearchStudent implements UpdateListener {
         searchPage = new Application() {
             @Override
             public void start(Stage primaryStage) throws Exception {
-                searchResults = new TableView<>();
+
                 GridPane checkBox = new GridPane();
                 checkBox.setMaxHeight(50);
                 checkBox.setVgap(5);
@@ -76,49 +78,29 @@ public class SearchStudent implements UpdateListener {
                 search.setMinWidth(400);
                 search.setPromptText("Name");
                 search.textProperty().addListener((observable, oldValue, newValue) ->
-                        searchResults.setItems(DataBaseManagement.getInstance().fetchWithCondition(getComparingColumn(getSelectedCheckBox()), newValue))
+                        searchResults.setItem(DataBaseManagement.getInstance().fetchWithCondition(getComparingColumn(getSelectedCheckBox()), newValue))
                 );
 
                 HBox searchRow = new HBox();
                 searchRow.setSpacing(5);
                 searchRow.getChildren().addAll(search, checkBox);
 
+                searchResults = new MyTableView<>(
+                        new MyTableColumn("First Name", "firstName"),
+                        new MyTableColumn("Last Name", "lastName"),
+                        new MyTableColumn("ID", "id"),
+                        new MyTableColumn("Sex", "sex"),
+                        new MyTableColumn("Year", "year"),
+                        new MyTableColumn("Phone Number", "phoneNumber"),
+                        new MyTableColumn("DOB", "dataOfBirth"),
+                        new MyTableColumn("Address", "address")
+                );
 
-                TableColumn<Student, Integer> noColumn = new TableColumn<>("#");
-                noColumn.setMaxWidth(30);
-                noColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getTableView().getItems().indexOf(param.getValue()) + 1));
-
-                TableColumn<Student, String> firstNameColumn = new TableColumn<>("First Name");
-                firstNameColumn.setMinWidth(150);
-                firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-
-                TableColumn<Student, String> lastNameColumn = new TableColumn<>("Last Name");
-                lastNameColumn.setMinWidth(150);
-                lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-                TableColumn<Student, String> idColumn = new TableColumn<>("ID");
-                idColumn.setMaxWidth(150);
-                idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-                TableColumn<Student, Sex> sexColumn = new TableColumn<>("Sex");
-                sexColumn.setMaxWidth(60);
-                sexColumn.setCellValueFactory(new PropertyValueFactory<>("sex"));
-
-                TableColumn<Student, String> yearColumn = new TableColumn<>("Year");
-                yearColumn.setMaxWidth(50);
-                yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
-
-                TableColumn<Student, Integer> phoneNumberColumn = new TableColumn<>("Phone Number");
-                phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-
-                TableColumn<Student, String> dataOfBirthColumn = new TableColumn<>("DOB");
-                dataOfBirthColumn.setCellValueFactory(new PropertyValueFactory<>("dataOfBirth"));
-
-                TableColumn<Student, String> addressColumn = new TableColumn<>("Address");
-                addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-
-                searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
-                searchResults.getColumns().addAll(noColumn, firstNameColumn, lastNameColumn, idColumn, sexColumn, yearColumn, phoneNumberColumn, dataOfBirthColumn, addressColumn);
+                try {
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+                } catch (NullPointerException e) {
+                    System.out.println("Empty Student List");
+                }
 
                 HBox operations = new HBox();
                 Button addStudent = new Button("Add");
@@ -132,36 +114,36 @@ public class SearchStudent implements UpdateListener {
 
                 Button editStudent = new Button("Edit");
                 editStudent.setOnAction(event -> {
-                    ObservableList<Student> selected = searchResults.getSelectionModel().getSelectedItems();
+                    ObservableList<Student> selected = searchResults.getSelectionModels().getSelectedItems();
                     if (selected.size() == 0) message.setText("Please select a book first");
                     else if (selected.size() > 1) message.setText("You can only update one book at a time");
                     else {
                         selected.forEach(student ->
-                                showAddStudentDialog(PageType.EDIT,
-                                        new ColumnValue<>(student.getFirstName(), ""),
-                                        new ColumnValue<>(student.getLastName(), ""),
-                                        new ColumnValue<>(student.getId(), ""),
-                                        new ColumnValue<>(student.getSex(), ""),
-                                        new ColumnValue<>(student.getDataOfBirth(), ""),
-                                        new ColumnValue<>(student.getPhoneNumber(), ""),
+                                        showAddStudentDialog(PageType.EDIT,
+                                                new ColumnValue<>(student.getFirstName(), ""),
+                                                new ColumnValue<>(student.getLastName(), ""),
+                                                new ColumnValue<>(student.getId(), ""),
+                                                new ColumnValue<>(student.getSex(), ""),
+                                                new ColumnValue<>(student.getDataOfBirth(), ""),
+                                                new ColumnValue<>(student.getPhoneNumber(), ""),
 //                                        new ColumnValue<>(student.getAddress(), ""),
-                                        new ColumnValue<>(student.getHouseNo(), ""),
-                                        new ColumnValue<>(student.getStreet(), ""),
-                                        new ColumnValue<>(student.getSubCity(), ""),
-                                        new ColumnValue<>(student.getCity(), ""),
-                                        new ColumnValue<>(student.getYear(), "")
-                                )
+                                                new ColumnValue<>(student.getHouseNo(), ""),
+                                                new ColumnValue<>(student.getStreet(), ""),
+                                                new ColumnValue<>(student.getSubCity(), ""),
+                                                new ColumnValue<>(student.getCity(), ""),
+                                                new ColumnValue<>(student.getYear(), "")
+                                        )
                         );
 
                     }
                 });
                 Button removeStudent = new Button("Remove");
                 removeStudent.setOnAction(event -> {
-                    ObservableList<Student> selected = searchResults.getSelectionModel().getSelectedItems();
+                    ObservableList<Student> selected = searchResults.getSelectionModels().getSelectedItems();
                     selected.forEach(Student ->
                             DataBaseManagement.getInstance().deleteRowFromTable("Student", "id=\"" + Student.getId() + "\"")
                     );
-                    searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
                 });
                 operations.getChildren().addAll(addStudent, editStudent, removeStudent);
                 operations.setSpacing(5);
@@ -173,8 +155,7 @@ public class SearchStudent implements UpdateListener {
 
                 VBox vBox = new VBox();
                 vBox.setPadding(new Insets(5));
-                vBox.getChildren().addAll(searchRow, searchResults, operations, message);
-
+                vBox.getChildren().addAll(searchRow, searchResults.getTableView(), operations, message);
 
                 Scene newScene = new Scene(vBox, 800, 500);
                 primaryStage.setScene(newScene);
@@ -206,7 +187,7 @@ public class SearchStudent implements UpdateListener {
             add.setMyTextFieldValue(add.getYear(), values[6].getValue().toString());
 //            add.setMyTextFieldValue(add.getAddress(), values[6].getValue().toString());
             add.setMyTextFieldValue(add.getHouseNo(), values[7].getValue().toString());
-            add.setMyTextFieldValue(add.getStreet(),values[8].getValue().toString());
+            add.setMyTextFieldValue(add.getStreet(), values[8].getValue().toString());
             add.setMyTextFieldValue(add.getSubCity(), values[9].getValue().toString());
             add.setMyTextFieldValue(add.getCity(), values[10].getValue().toString());
 
@@ -255,6 +236,6 @@ public class SearchStudent implements UpdateListener {
 
     @Override
     public void updateTable() {
-        searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+        searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
     }
 }

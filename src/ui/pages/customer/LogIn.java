@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Account.Account;
+import models.Account.RegistrarAccount;
 
 public class LogIn {
     private Application login;
@@ -40,17 +41,17 @@ public class LogIn {
                     if (usernameinput != null && passwordinput != null) {
                         try {
                             DataBaseManagement.getInstance().openDataBase();
-                            ObservableList<Account> userNames = DataBaseManagement.getInstance().fetchColumnsFromUserName("*");
-                            for (Account accounts : userNames) {
+                            ObservableList<RegistrarAccount> userNames = DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*");
+                            for (RegistrarAccount accounts : userNames) {
                                 if (accounts.getUserName().equals(usernameinput) && accounts.getPassword().equals(passwordinput)) {
                                     accountMatches = true;
                                     break;
                                 }
                             }
-                           /* if (accountMatches){
+                            if (accountMatches){
                                 new SearchStudent();
                                 primaryStage.close();
-                            }*/
+                            }
                         } catch (Exception exception) {
                             messageLabel.setText("Please Ask your Admin to register you first");
                         }

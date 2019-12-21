@@ -1,11 +1,11 @@
-package database;
+package assistingclasses;
 
 public class Column {
     private String columnName;
     private String dataType;
     private int constraint;
 
-    public Column(String columnName, String dataType,int constraint) {
+    public Column(String columnName, String dataType, int constraint) {
         this.columnName = columnName;
         this.dataType = dataType;
         this.constraint = constraint;
@@ -23,17 +23,18 @@ public class Column {
         return dataType;
     }
 
-    public void setDataType(String dataType) {
+    public void setSQLDataType(String dataType) {
         this.dataType = dataType;
     }
-    public String getSQLDataType(){
-        if (dataType.equals("String")){
-            return "varchar("+constraint+")";
-        }else if (dataType.equals("Int")) {
+
+    public String getSQLDataType() {
+        if (dataType.equals("String")) {
+            return "varchar(" + constraint + ")";
+        } else if (dataType.equals("Int")) {
             return "int";
-        }else if(dataType.equals("Double")){
+        } else if (dataType.equals("Double")) {
             return "double";
-        }else{
+        } else {
             return "";
         }
     }

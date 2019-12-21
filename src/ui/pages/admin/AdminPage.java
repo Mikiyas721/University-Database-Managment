@@ -1,7 +1,6 @@
 package ui.pages.admin;
 
-import database.Column;
-import database.ColumnValue;
+import assistingclasses.*;
 import database.DataBaseManagement;
 import javafx.application.Application;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -10,20 +9,16 @@ import javafx.event.*;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import models.Account.Account;
-import models.Account.RegistrarAccount;
-import ui.customWidget.MyAdminButton;
-import ui.customWidget.RegistrarInputs;
+import javafx.stage.*;
+import models.Account.*;
+import ui.customWidget.*;
 
 public class AdminPage {
     private BorderPane window;
     private RegistrarInputs addNew;
     private RegistrarInputs editExisting;
-    private TableView<RegistrarAccount> searchResults;
+    private MyTableView<RegistrarAccount> searchResults;
     private String userName = null;
 
     public AdminPage() {
@@ -41,6 +36,7 @@ public class AdminPage {
 
                 window = new BorderPane();
                 window.setLeft(hBox);
+                window.setTop(getSearchTools());
 
                 registrar.setOnAction(event -> setAddNew());
 
@@ -87,7 +83,7 @@ public class AdminPage {
                         new ColumnValue(addNew.getUserName(), "username"),
                         new ColumnValue(addNew.getPassword(), "password"));
             }
-            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
+            searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
 
         }, event -> {
             DataBaseManagement.getInstance().updateValueInTable("RegistrarAccount",
@@ -98,10 +94,10 @@ public class AdminPage {
                     new ColumnValue<>(editExisting.getUserName(), "username"),
                     new ColumnValue<>(editExisting.getPassword(), "password")
 
-                    );
-            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
+            );
+            searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
         }, event -> {
-            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModel().getSelectedItems();
+            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModels().getSelectedItems();
             selected.forEach(registrarAccount -> {
                 editExisting.setFirstName(registrarAccount.getFirstName());
                 editExisting.setLastName(registrarAccount.getLastName());
@@ -111,18 +107,19 @@ public class AdminPage {
                 userName = editExisting.getUserName();
             });
         }, event -> {
-            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModel().getSelectedItems();
+            ObservableList<RegistrarAccount> selected = searchResults.getSelectionModels().getSelectedItems();
             selected.forEach(account -> DataBaseManagement.getInstance().deleteRowFromTable("RegistrarAccount",
-                    "id=\"" + account.getUserName() + "\""));
-            searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
+                    "username=\"" + account.getUserName() + "\""));
+            searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
         }));
         window.setCenter(getTableView());
     }
 
-    private VBox getManipulationPage(EventHandler<ActionEvent> onSubmitClicked,
-                                     EventHandler<ActionEvent> onEditClicked,
-                                     EventHandler<ActionEvent> onLoadClicked,
-                                     EventHandler<ActionEvent> onDeleteClicked) {
+    private ScrollPane getManipulationPage(EventHandler<ActionEvent> onSubmitClicked,
+                                           EventHandler<ActionEvent> onEditClicked,
+                                           EventHandler<ActionEvent> onLoadClicked,
+                                           EventHandler<ActionEvent> onDeleteClicked) {
+        ScrollPane scrollPane = new ScrollPane();
         VBox mainBox = new VBox(5);
         addNew = new RegistrarInputs("Submit", "Add New Account", onSubmitClicked);
         editExisting = new RegistrarInputs("Edit", "Edit the Selected Account", onEditClicked);
@@ -148,39 +145,89 @@ public class AdminPage {
         deleteAccount.getChildren().addAll(label, loadButton, deleteButton);
 
         mainBox.getChildren().addAll(addNew.getGridPane(), new Separator(), editExisting.getGridPane(), new Separator(), deleteAccount);
-        return mainBox;
+        scrollPane.setContent(mainBox);
+        scrollPane.setMinWidth(250);
+        return scrollPane;
 
     }
 
-    public TableView getTableView() {
-        searchResults = new TableView<>();
+    private TableView getTableView() {
+        searchResults = new MyTableView<>(
+                new MyTableColumn("First Name", "firstName"),
+                new MyTableColumn("Last Name", "lastName"),
+                new MyTableColumn("Email", "email"),
+                new MyTableColumn("User Name", "userName"),
+                new MyTableColumn("Password", "password")
+        );
 
         TableColumn<RegistrarAccount, Integer> noColumn = new TableColumn<>("#");
         noColumn.setMaxWidth(30);
         noColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getTableView().getItems().indexOf(param.getValue()) + 1));
 
-        TableColumn<RegistrarAccount, String> firstNameColumn = new TableColumn<>("First Name");
-        firstNameColumn.setMinWidth(150);
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
 
-        TableColumn<RegistrarAccount, String> lastNameColumn = new TableColumn<>("Last Name");
-        lastNameColumn.setMinWidth(150);
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        return searchResults.getTableView();
 
-        TableColumn<RegistrarAccount, String> emailColumn = new TableColumn<>("Email");
-        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+    }
 
-        TableColumn<RegistrarAccount, String> userNameColumn = new TableColumn<>("User Name");
-        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+    private VBox getSearchTools() {
 
-        TableColumn<RegistrarAccount, String> passwordColumn = new TableColumn<>("Password");
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+        GridPane checkBox = new GridPane();
+        checkBox.setMaxHeight(50);
+        checkBox.setVgap(5);
+        checkBox.setHgap(5);
+        checkBox.setPadding(new Insets(5));
 
-        searchResults.setItems(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
-        searchResults.getColumns().addAll(noColumn, firstNameColumn, lastNameColumn, emailColumn, userNameColumn, passwordColumn);
+        CheckBox byFirstName = new CheckBox("First Name");
+        byFirstName.setSelected(true);
+        /*checkBoxArray[0] = byFirstName;*/
+
+        CheckBox byLastName = new CheckBox("Last Name");
+        /* checkBoxArray[1] = byLastName;*/
+
+        CheckBox byId = new CheckBox("Id");
+        /*checkBoxArray[2] = byId;*/
+
+        CheckBox bySex = new CheckBox("Sex");
+        /*checkBoxArray[3] = bySex;*/
+
+        CheckBox byDob = new CheckBox("DOB");
+        /* checkBoxArray[4] = byDob;*/
+
+        CheckBox byAddress = new CheckBox("Address");
+        /*checkBoxArray[5] = byAddress;*/
+
+        CheckBox byYear = new CheckBox("Year");
+        /*  checkBoxArray[6] = byYear;*/
+
+        CheckBox byPhoneNumber = new CheckBox("Phone");
+     /*   checkBoxArray[7] = byPhoneNumber;
+
+        initializeCheckBox();*/
+
+        GridPane.setConstraints(byFirstName, 1, 1);
+        GridPane.setConstraints(byLastName, 1, 2);
+        GridPane.setConstraints(byId, 2, 1);
+        GridPane.setConstraints(bySex, 2, 2);
+        GridPane.setConstraints(byDob, 3, 1);
+        GridPane.setConstraints(byYear, 3, 2);
+        GridPane.setConstraints(byPhoneNumber, 4, 1);
+        GridPane.setConstraints(byAddress, 4, 2);
+
+        checkBox.getChildren().addAll(byFirstName, byLastName, byId, bySex, byDob, byAddress, byYear, byPhoneNumber);
+
+        TextField search = new TextField();
+        search.setMinWidth(400);
+        search.setPromptText("Name");
 
 
-        return searchResults;
+        HBox searchRow = new HBox();
+        searchRow.setSpacing(5);
+        searchRow.getChildren().addAll(search, checkBox);
 
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(10, 5, 2, 10));
+        vBox.getChildren().addAll(searchRow, new Separator());
+        return vBox;
     }
 }

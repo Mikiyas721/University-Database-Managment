@@ -1,5 +1,7 @@
 package database;
 
+import assistingclasses.Column;
+import assistingclasses.ColumnValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.Account.Account;

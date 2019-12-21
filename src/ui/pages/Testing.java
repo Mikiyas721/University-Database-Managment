@@ -1,12 +1,5 @@
 package ui.pages;
 
-import database.Column;
-import database.ColumnValue;
-import database.DataBaseManagement;
-import javafx.collections.ObservableList;
-import models.Sex;
-import models.Student;
-
 public class Testing {
 /*    public static void main(String[] args) {
         if (!DataBaseManagement.getInstance().openDataBase()) System.out.println("Couldn't open Database");
