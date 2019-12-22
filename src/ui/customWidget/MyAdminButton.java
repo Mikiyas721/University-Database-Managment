@@ -1,16 +1,20 @@
 package ui.customWidget;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
+
 public class MyAdminButton {
+    private Button button;
+
     public Button getButton() {
         return button;
     }
 
-    private Button button;
-
-    public MyAdminButton(String name) {
+    public MyAdminButton(String name, EventHandler<ActionEvent> onButtonClick) {
         button = new Button(name);
+        button.setOnAction(onButtonClick);
         button.setUnderline(true);
         button.getStyleClass().add("transparentButton");
         button.getStylesheets().add("./ui/css/label.css");

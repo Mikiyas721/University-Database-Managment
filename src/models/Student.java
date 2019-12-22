@@ -18,18 +18,19 @@ public class Student {
     private String departmentId;
 
     public Student(
-            String id,
             String firstName,
             String lastName,
+            String id,
             Sex sex,
             int year,
-            int phoneNumber,
             LocalDate dataOfBirth,
-            int houseNo,
-            String street,
-            String subCity,
+            int phoneNumber,
             String city,
-            String departmentId) {
+            String subCity,
+            String street,
+            int houseNo
+
+            /*String departmentId*/) {
 
         this.id = id;
         this.firstName = firstName;
@@ -42,7 +43,7 @@ public class Student {
         this.street = street;
         this.subCity = subCity;
         this.city = city;
-        this.departmentId = departmentId;
+   /*     this.departmentId = departmentId;*/
     }
 
     public String getId() {
@@ -141,8 +142,8 @@ public class Student {
         this.departmentId = departmentId;
     }
 
-    public String getLocalDateString() {
-        return dataOfBirth.getDayOfMonth() + "/" + dataOfBirth.getMonthValue() + "/" + dataOfBirth.getYear();
+    public static String getLocalDateString(LocalDate localDate) {
+        return localDate.getDayOfMonth() + "/" + localDate.getMonthValue() + "/" + localDate.getYear();
     }
 
     public static LocalDate getLocalDateFromString(String dateString) {

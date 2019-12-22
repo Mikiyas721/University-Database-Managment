@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import models.Account.Account;
 import models.Account.RegistrarAccount;
 
 public class LogIn {
@@ -49,7 +48,7 @@ public class LogIn {
                                 }
                             }
                             if (accountMatches){
-                                new SearchStudent();
+                                new Preview();
                                 primaryStage.close();
                             }
                         } catch (Exception exception) {

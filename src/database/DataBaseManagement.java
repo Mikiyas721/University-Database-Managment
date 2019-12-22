@@ -75,13 +75,13 @@ public class DataBaseManagement {
                         resultSet.getString(3),
                         Sex.getSexObject(resultSet.getString(4)),
                         resultSet.getInt(5),
-                        resultSet.getInt(6),
-                        Student.getLocalDateFromString(resultSet.getString(7)),
-                        resultSet.getInt(8),
+                        Student.getLocalDateFromString(resultSet.getString(6)),
+                        resultSet.getInt(7),
+                        resultSet.getString(8),
                         resultSet.getString(9),
                         resultSet.getString(10),
-                        resultSet.getString(11),
-                        resultSet.getString(12)
+                        resultSet.getInt(11)
+                        /*resultSet.getString(12)*/
                 );
                 studentList.add(student);
             }
@@ -92,6 +92,7 @@ public class DataBaseManagement {
         return null;
 
     }
+
     private ObservableList<RegistrarAccount> makeRegistrarAccountObservable(ResultSet resultSet) {
         ObservableList<RegistrarAccount> accountList = FXCollections.observableArrayList();
         try {
