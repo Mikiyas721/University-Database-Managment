@@ -51,11 +51,11 @@ public class AdminPage {
                                     window.setCenter(new Label("Teacher Page"));
                                     window.setRight(null);
                                 }),
-                                new MyButton("Student", event -> {
-                                    window.setCenter(new Label("Student Page"));
+                                new MyButton("StudentWindow", event -> {
+                                    window.setCenter(new Label("StudentWindow Page"));
                                     window.setRight(null);
                                 })
-                        ).gethBox()
+                        ).getHBox()
                 );
                 window.setTop(searchBar);
 

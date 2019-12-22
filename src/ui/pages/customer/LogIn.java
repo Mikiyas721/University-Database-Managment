@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Account.RegistrarAccount;
+import ui.pages.customer.registrar.RegistrarPage;
 
 public class LogIn {
     private Application login;
