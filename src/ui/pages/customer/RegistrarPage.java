@@ -15,12 +15,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import models.Sex;
 import models.Student;
 import ui.customWidget.*;
 
 
-public class Preview {
+public class RegistrarPage {
     private Inputs addNew;
     private Inputs editExisting;
     private Application searchPage;
@@ -36,7 +35,7 @@ public class Preview {
                 private String departmentId;*/
 
 
-    Preview() {
+    RegistrarPage() {
         CheckBoxGrid checkBox = new CheckBoxGrid(
                 Inputs.STUDENT_INPUTS[0],
                 Inputs.STUDENT_INPUTS[1],
@@ -69,14 +68,14 @@ public class Preview {
                 window = new BorderPane();
 
                 window.setLeft(new ButtonList(
-                                new MyAdminButton("Registrar", event -> {
+                                new MyButton("Students", event -> {
                                     window.setCenter(searchResults.getTableView());
                                 }),
-                                new MyAdminButton("Teacher", event -> {
+                                new MyButton("Teachers", event -> {
                                     window.setCenter(new Label("Teacher Page"));
                                     window.setRight(null);
                                 }),
-                                new MyAdminButton("Student", event -> {
+                                new MyButton("Student", event -> {
                                     window.setCenter(new Label("Student Page"));
                                     window.setRight(null);
                                 })

@@ -48,7 +48,7 @@ public class LogIn {
                                 }
                             }
                             if (accountMatches){
-                                new Preview();
+                                new RegistrarPage();
                                 primaryStage.close();
                             }
                         } catch (Exception exception) {

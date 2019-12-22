@@ -46,12 +46,12 @@ public class AdminPage {
 
                 window = new BorderPane();
                 window.setLeft(new ButtonList(
-                                new MyAdminButton("Registrar", event -> setAddNew()),
-                                new MyAdminButton("Teacher", event -> {
+                                new MyButton("Registrar", event -> setAddNew()),
+                                new MyButton("Teacher", event -> {
                                     window.setCenter(new Label("Teacher Page"));
                                     window.setRight(null);
                                 }),
-                                new MyAdminButton("Student", event -> {
+                                new MyButton("Student", event -> {
                                     window.setCenter(new Label("Student Page"));
                                     window.setRight(null);
                                 })
