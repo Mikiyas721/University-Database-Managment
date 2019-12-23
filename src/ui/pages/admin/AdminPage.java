@@ -3,6 +3,7 @@ package ui.pages.admin;
 import assistingclasses.*;
 import database.DataBaseManagement;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.geometry.*;
@@ -25,11 +26,11 @@ public class AdminPage {
             @Override
             public void start(Stage primaryStage) throws Exception {
                 CheckBoxGrid checkBoxGrid = new CheckBoxGrid(
-                        Inputs.REGISTRAR_INPUTS[0],
-                        Inputs.REGISTRAR_INPUTS[1],
-                        Inputs.REGISTRAR_INPUTS[2],
-                        Inputs.REGISTRAR_INPUTS[3],
-                        Inputs.REGISTRAR_INPUTS[4]
+                        Constants.REGISTRAR_INPUTS[0],
+                        Constants.REGISTRAR_INPUTS[1],
+                        Constants.REGISTRAR_INPUTS[2],
+                        Constants.REGISTRAR_INPUTS[3],
+                        Constants.REGISTRAR_INPUTS[4]
                 );
                 TextField search = new TextField();
                 search.setMinWidth(400);
@@ -45,19 +46,21 @@ public class AdminPage {
                 searchBar.getChildren().addAll(searchRow, new Separator());
 
                 window = new BorderPane();
-                window.setLeft(new ButtonList(
-                                new MyButton("Registrar", event -> setAddNew()),
-                                new MyButton("Teacher", event -> {
-                                    window.setCenter(new Label("Teacher Page"));
-                                    window.setRight(null);
-                                }),
-                                new MyButton("StudentWindow", event -> {
-                                    window.setCenter(new Label("StudentWindow Page"));
-                                    window.setRight(null);
-                                })
-                        ).getHBox()
-                );
-                window.setTop(searchBar);
+                ToolBar toolbar = new ToolBar();
+                toolbar.getItems().add(new ButtonList(
+                        new MyButton("Registrar", event -> setAddNew()),
+                        new MyButton("Teacher", event -> {
+                            window.setCenter(new Label("Teacher Page"));
+                            window.setRight(null);
+                        }),
+                        new MyButton("StudentWindow", event -> {
+                            window.setCenter(new Label("StudentWindow Page"));
+                            window.setRight(null);
+                        })
+                ).getHBox());
+                /*window.setLeft(setWindowLeft());*/
+                VBox vBox = new VBox(toolbar, searchBar);
+                window.setTop(vBox);
 
                 Rectangle2D screen = Screen.getPrimary().getBounds();
                 Scene scene = new Scene(window, screen.getWidth(), screen.getHeight());
@@ -82,46 +85,46 @@ public class AdminPage {
                     new Column("username", "String", 15),
                     new Column("password", "String", 15)
             );
-            if ((addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[0]).isEmpty() ||
-                    addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[1]).isEmpty() ||
-                    addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[3]).isEmpty() ||
-                    addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[4]).isEmpty())) {
+            if ((addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[0]).isEmpty() ||
+                    addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[1]).isEmpty() ||
+                    addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[3]).isEmpty() ||
+                    addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[4]).isEmpty())) {
                 addNew.setMessage("Please fill in all fields");
-            } else if (!Account.validateEmail(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[2]))) {
+            } else if (!Account.validateEmail(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[2]))) {
                 addNew.setMessage("Invalid Email");
-            } else if (!Account.validatePassword(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[4]))) {
+            } else if (!Account.validatePassword(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[4]))) {
                 addNew.setMessage("Invalid Password. Your password needs to be longer than 7 characters and contain at least one letter(upper and lowercase) and number");
             } else {
                 addNew.setMessage("");
                 DataBaseManagement.getInstance().insertDataIntoTable("RegistrarAccount",
-                        new ColumnValue(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[0]), "firstName"),
-                        new ColumnValue(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[1]), "lastName"),
-                        new ColumnValue(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[2]), "email"),
-                        new ColumnValue(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[3]), "username"),
-                        new ColumnValue(addNew.getTextFieldValue(Inputs.REGISTRAR_INPUTS[4]), "password"));
+                        new ColumnValue(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[0]), "firstName"),
+                        new ColumnValue(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[1]), "lastName"),
+                        new ColumnValue(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[2]), "email"),
+                        new ColumnValue(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[3]), "username"),
+                        new ColumnValue(addNew.getTextFieldValue(Constants.REGISTRAR_INPUTS[4]), "password"));
             }
             searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
 
         }, event -> {
             DataBaseManagement.getInstance().updateValueInTable("RegistrarAccount",
                     "username=\"" + userName + "\"",
-                    new ColumnValue<>(editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[0]), "firstName"),
-                    new ColumnValue<>(editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[1]), "lastName"),
-                    new ColumnValue<>(editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[2]), "email"),
-                    new ColumnValue<>(editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[3]), "username"),
-                    new ColumnValue<>(editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[4]), "password")
+                    new ColumnValue<>(editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[0]), "firstName"),
+                    new ColumnValue<>(editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[1]), "lastName"),
+                    new ColumnValue<>(editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[2]), "email"),
+                    new ColumnValue<>(editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[3]), "username"),
+                    new ColumnValue<>(editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[4]), "password")
 
             );
             searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromRegistrarAccount("*"));
         }, event -> {
             ObservableList<RegistrarAccount> selected = searchResults.getSelectionModels().getSelectedItems();
             selected.forEach(registrarAccount -> {
-                editExisting.setTextFieldValue(Inputs.REGISTRAR_INPUTS[0], registrarAccount.getFirstName());
-                editExisting.setTextFieldValue(Inputs.REGISTRAR_INPUTS[1], registrarAccount.getLastName());
-                editExisting.setTextFieldValue(Inputs.REGISTRAR_INPUTS[2], registrarAccount.getEmail());
-                editExisting.setTextFieldValue(Inputs.REGISTRAR_INPUTS[3], registrarAccount.getUserName());
-                editExisting.setTextFieldValue(Inputs.REGISTRAR_INPUTS[4], registrarAccount.getPassword());
-                userName = editExisting.getTextFieldValue(Inputs.REGISTRAR_INPUTS[3]);
+                editExisting.setTextFieldValue(Constants.REGISTRAR_INPUTS[0], registrarAccount.getFirstName());
+                editExisting.setTextFieldValue(Constants.REGISTRAR_INPUTS[1], registrarAccount.getLastName());
+                editExisting.setTextFieldValue(Constants.REGISTRAR_INPUTS[2], registrarAccount.getEmail());
+                editExisting.setTextFieldValue(Constants.REGISTRAR_INPUTS[3], registrarAccount.getUserName());
+                editExisting.setTextFieldValue(Constants.REGISTRAR_INPUTS[4], registrarAccount.getPassword());
+                userName = editExisting.getTextFieldValue(Constants.REGISTRAR_INPUTS[3]);
             });
         }, event -> {
             ObservableList<RegistrarAccount> selected = searchResults.getSelectionModels().getSelectedItems();
@@ -138,9 +141,9 @@ public class AdminPage {
                                            EventHandler<ActionEvent> onDeleteClicked) {
         ScrollPane scrollPane = new ScrollPane();
         VBox mainBox = new VBox(5);
-        addNew = new Inputs("Add new registrar access", "Submit", onSubmitClicked, Inputs.REGISTRAR_INPUTS
+        addNew = new Inputs("Add new registrar access", "Submit", onSubmitClicked, Constants.REGISTRAR_INPUTS
         );
-        editExisting = new Inputs("Edit the Selected Account", "Edit", onEditClicked, Inputs.REGISTRAR_INPUTS);
+        editExisting = new Inputs("Edit the Selected Account", "Edit", onEditClicked, Constants.REGISTRAR_INPUTS);
 
         VBox deleteAccount = new VBox(5);
         deleteAccount.setPadding(new Insets(10));
@@ -182,6 +185,22 @@ public class AdminPage {
 
         return searchResults.getTableView();
 
+    }
+
+    public VBox setWindowLeft() {
+        ObservableList<String> department = FXCollections.observableArrayList();
+        department.addAll("SECE", "SCEE", "SMIE");
+        VBox vBox = new VBox(10);
+        vBox.setPadding(new Insets(10));
+        vBox.setMinWidth(100);
+
+        ComboBox<String> comboBox = new ComboBox<>(department);
+        ComboBox<String> comboBox2 = new ComboBox<>(department);
+        ComboBox<String> comboBox3 = new ComboBox<>(department);
+        ComboBox<String> comboBox4 = new ComboBox<>(department);
+
+        vBox.getChildren().addAll(comboBox, new Label("Department"), comboBox2, comboBox3, comboBox4);
+        return vBox;
     }
 
 }

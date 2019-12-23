@@ -11,26 +11,6 @@ import javafx.scene.layout.*;
 
 public class Inputs {
 
-    public static String[] REGISTRAR_INPUTS = {
-            "First Name",
-            "Last Name",
-            "Email",
-            "Username",
-            "Password"
-    };
-    public static String[] STUDENT_INPUTS = {
-            "First Name",
-            "Last Name",
-            "ID",
-            "Sex",
-            "Year",
-            "DOB",
-            "Phone Number",
-            "City",
-            "SubCity",
-            "Street",
-            "House No",
-    };
     private GridPane gridPane;
 
     public Inputs(String sectionWork,

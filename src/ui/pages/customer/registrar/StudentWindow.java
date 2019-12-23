@@ -2,6 +2,7 @@ package ui.pages.customer.registrar;
 
 import assistingclasses.Column;
 import assistingclasses.ColumnValue;
+import assistingclasses.Constants;
 import assistingclasses.MyTableColumn;
 import database.DataBaseManagement;
 import javafx.collections.FXCollections;
@@ -37,17 +38,17 @@ public class StudentWindow {
         department.addAll("SECE", "SCEE", "SMIE");
 
         CheckBoxGrid checkBox = new CheckBoxGrid(
-                Inputs.STUDENT_INPUTS[0],
-                Inputs.STUDENT_INPUTS[1],
-                Inputs.STUDENT_INPUTS[2],
-                Inputs.STUDENT_INPUTS[3],
-                Inputs.STUDENT_INPUTS[4],
-                Inputs.STUDENT_INPUTS[5],
-                Inputs.STUDENT_INPUTS[6],
-                Inputs.STUDENT_INPUTS[7],
-                Inputs.STUDENT_INPUTS[8],
-                Inputs.STUDENT_INPUTS[9],
-                Inputs.STUDENT_INPUTS[10]
+                Constants.STUDENT_INPUTS[0],
+                Constants.STUDENT_INPUTS[1],
+                Constants.STUDENT_INPUTS[2],
+                Constants.STUDENT_INPUTS[3],
+                Constants.STUDENT_INPUTS[4],
+                Constants.STUDENT_INPUTS[5],
+                Constants.STUDENT_INPUTS[6],
+                Constants.STUDENT_INPUTS[7],
+                Constants.STUDENT_INPUTS[8],
+                Constants.STUDENT_INPUTS[9],
+                Constants.STUDENT_INPUTS[10]
         );
         TextField search = new TextField();
         search.setMinWidth(400);
@@ -72,9 +73,9 @@ public class StudentWindow {
 
         ScrollPane scrollPane = new ScrollPane();
         VBox mainBox = new VBox(5);
-        addNew = new Inputs("Add new student", "Submit", event -> onSubmitButtonClicked(), Inputs.STUDENT_INPUTS
+        addNew = new Inputs("Add new student", "Submit", event -> onSubmitButtonClicked(), Constants.STUDENT_INPUTS
         );
-        editExisting = new Inputs("Edit student information", "Edit", event -> onEditButtonClicked(), Inputs.STUDENT_INPUTS);
+        editExisting = new Inputs("Edit student information", "Edit", event -> onEditButtonClicked(), Constants.STUDENT_INPUTS);
 
         VBox deleteAccount = new VBox(5);
         deleteAccount.setPadding(new Insets(10));
@@ -198,36 +199,36 @@ public class StudentWindow {
 
     private void onSubmitButtonClicked() {
 
-        DataBaseManagement.getInstance().insertDataIntoTable("StudentWindow",
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[0]), "firstName"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[1]), "lastName"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[2]), "id"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[3]), "sex"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[4]), "year"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[5]), "dataOfBirth"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[6]), "phoneNumber"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[7]), "city"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[8]), "subCity"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[9]), "street"),
-                new ColumnValue(addNew.getTextFieldValue(Inputs.STUDENT_INPUTS[10]), "houseNo")
+        DataBaseManagement.getInstance().insertDataIntoTable("Student",
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[0]), "firstName"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[1]), "lastName"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[2]), "id"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[3]), "sex"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "year"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "dataOfBirth"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "phoneNumber"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "city"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "subCity"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "street"),
+                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[10]), "houseNo")
         );
-        searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+       searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
     }
 
     private void onEditButtonClicked() {
-        DataBaseManagement.getInstance().updateValueInTable("StudentWindow",
+        DataBaseManagement.getInstance().updateValueInTable("Student",
                 "id=\"" + id + "\"",
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[0]), "firstName"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[1]), "lastName"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[2]), "id"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[3]), "sex"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[4]), "year"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[5]), "dataOfBirth"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[6]), "phoneNumber"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[7]), "city"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[8]), "subCity"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[9]), "street"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[10]), "houseNo")
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[0]), "firstName"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[1]), "lastName"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[2]), "id"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[3]), "sex"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "year"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "dataOfBirth"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "phoneNumber"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "city"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "subCity"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "street"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[10]), "houseNo")
 
         );
         searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
@@ -237,25 +238,25 @@ public class StudentWindow {
 
         ObservableList<models.Student> selected = searchResults.getSelectionModels().getSelectedItems();
         selected.forEach(student -> {
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[0], student.getFirstName());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[1], student.getLastName());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[2], student.getId());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[3], student.getSex().toString());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[4], Integer.toString(student.getYear()));
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[5], models.Student.getLocalDateString(student.getDataOfBirth()));
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[6], Integer.toString(student.getPhoneNumber()));
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[7], student.getCity());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[8], student.getSubCity());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[9], student.getStreet());
-            editExisting.setTextFieldValue(Inputs.STUDENT_INPUTS[10], Integer.toString(student.getHouseNo()));
-            id = editExisting.getTextFieldValue(Inputs.STUDENT_INPUTS[2]);
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[0], student.getFirstName());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[1], student.getLastName());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[2], student.getId());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[3], student.getSex().toString());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[4], Integer.toString(student.getYear()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[5], models.Student.getLocalDateString(student.getDataOfBirth()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[6], Integer.toString(student.getPhoneNumber()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[7], student.getCity());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[8], student.getSubCity());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[9], student.getStreet());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[10], Integer.toString(student.getHouseNo()));
+            id = editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[2]);
         });
     }
 
     private void onDeleteButtonClicked() {
 
         ObservableList<models.Student> selected = searchResults.getSelectionModels().getSelectedItems();
-        selected.forEach(account -> DataBaseManagement.getInstance().deleteRowFromTable("StudentWindow",
+        selected.forEach(account -> DataBaseManagement.getInstance().deleteRowFromTable("Student",
                 "id=\"" + account.getId() + "\""));
         searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
     }

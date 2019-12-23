@@ -12,11 +12,11 @@ import ui.customWidget.*;
 
 public class RegistrarPage {
 
-    private Application searchPage;
+    private Application registrarPage;
 
     public RegistrarPage() {
 
-        searchPage = new Application() {
+        registrarPage = new Application() {
             @Override
             public void start(Stage primaryStage) throws Exception {
                 BorderPane window = new BorderPane();
@@ -46,7 +46,7 @@ public class RegistrarPage {
 
         };
         try {
-            searchPage.start(new Stage());
+            registrarPage.start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }

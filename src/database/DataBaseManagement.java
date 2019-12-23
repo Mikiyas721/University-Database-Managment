@@ -114,7 +114,7 @@ public class DataBaseManagement {
     }
 
     public ObservableList<Student> fetchWithCondition(String comparingColumn, String newValue) {
-        ResultSet resultSet = fetchColumnsFromTable("StudentWindow", comparingColumn, newValue, "*");
+        ResultSet resultSet = fetchColumnsFromTable("Student", comparingColumn, newValue, "*");
         return makeStudentObservable(resultSet);
     }
 
