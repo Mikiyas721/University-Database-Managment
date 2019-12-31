@@ -27,6 +27,8 @@ public class CheckBoxGrid {
             try {
                 int j = 0;
                 CheckBox checkBox = new CheckBox(name[i]);
+                checkBox.getStyleClass().add("checkBox");
+                checkBox.getStylesheets().add("./ui/css/label.css");
                 checkBox.setId(name[i]);
                 checkBox.selectedProperty().addListener(observable -> makeMutuallyExclusive(checkBox));
                 GridPane.setConstraints(checkBox, k, j);
@@ -35,6 +37,8 @@ public class CheckBoxGrid {
                 j++;
 
                 CheckBox checkBox2 = new CheckBox(name[i + 1]);
+                checkBox2.getStyleClass().add("checkBox");
+                checkBox2.getStylesheets().add("./ui/css/label.css");
                 checkBox2.setId(name[i + 1]);
                 checkBox2.selectedProperty().addListener(observable -> makeMutuallyExclusive(checkBox2));
                 GridPane.setConstraints(checkBox2, k, j);

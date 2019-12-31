@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import models.Program;
 import models.Student;
 import ui.customWidget.CheckBoxGrid;
 import ui.customWidget.Inputs;
@@ -105,18 +106,42 @@ public class StudentWindow {
     }
 
     public void setWindowLeft() {
+        ObservableList<String> collage = FXCollections.observableArrayList();
+        collage.addAll("AAIT","CNCS","CBE","CDS","CEBS","CHS","CHLJC","CLGS","CSS","CVMA","CPVA");
+
         ObservableList<String> department = FXCollections.observableArrayList();
         department.addAll("SECE", "SCEE", "SMIE");
+
+        ObservableList<Program> program = FXCollections.observableArrayList();
+        program.addAll(Program.Under_Grad,Program.Grad,Program.Post_Grad);
+
+        ObservableList<Integer> year = FXCollections.observableArrayList();
+        year.addAll(1,2,3,4,5);
+
+        ObservableList<String> section = FXCollections.observableArrayList();
+        section.addAll("A","B","C","D");
+
         VBox vBox = new VBox(10);
         vBox.setPadding(new Insets(10));
         vBox.setMinWidth(100);
 
-        ComboBox<String> comboBox = new ComboBox<>(department);
-        ComboBox<String> comboBox2 = new ComboBox<>(department);
-        ComboBox<String> comboBox3 = new ComboBox<>(department);
-        ComboBox<String> comboBox4 = new ComboBox<>(department);
+        ComboBox<String> collages = new ComboBox<>(collage);
+        collages.setPromptText("Collage");
 
-        vBox.getChildren().addAll(comboBox, new Label("Department"), comboBox2, comboBox3, comboBox4);
+        ComboBox<String> departments = new ComboBox<>(department);
+        departments.setPromptText("Department");
+
+        ComboBox<Program> programs = new ComboBox<>(program);
+        programs.setPromptText("Program");
+
+        ComboBox<Integer> years = new ComboBox<>(year);
+        years.setPromptText("Year");
+
+        ComboBox<String> sections = new ComboBox<>(section);
+        sections.setPromptText("Section");
+
+
+        vBox.getChildren().addAll(collages,departments, programs, years, sections);
         window.setLeft(vBox);
     }
 

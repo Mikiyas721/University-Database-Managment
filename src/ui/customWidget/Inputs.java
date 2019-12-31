@@ -18,6 +18,8 @@ public class Inputs {
                   EventHandler<ActionEvent> onSubmitClicked,
                   String... inputs) {
         gridPane = new GridPane();
+        gridPane.getStyleClass().add("mainBlack");
+        gridPane.getStylesheets().add("./ui/css/label.css");
         gridPane.setPadding(new Insets(30, 10, 10, 20));
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -33,11 +35,15 @@ public class Inputs {
         for (int i = 0; i < inputs.length; i++) {
             int j = 0;
             Label newLabel = new Label(inputs[i]);
+            newLabel.getStyleClass().add("inputLabel");
+            newLabel.getStylesheets().add("./ui/css/label.css");
             newLabel.setId(inputs[i] + "Label");
             gridPane.getChildren().add(newLabel);
             GridPane.setConstraints(newLabel, j, i + 1);
             j++;
             TextField textField = new TextField();
+            textField.getStyleClass().add("inputField");
+            textField.getStylesheets().add("./ui/css/label.css");
             textField.setPromptText(inputs[i]);
             textField.setId(inputs[i]);
             gridPane.getChildren().add(textField);

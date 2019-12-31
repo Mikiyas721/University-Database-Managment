@@ -303,5 +303,39 @@ public class DataBaseManagement {
         return false;
     }
 
+    public void joinAndFetch(String fetchTable,
+                             String joiningTable,
+                             String joiningTableParam1,
+                             String joiningTableParam2,
+                             String table1,
+                             String table1Param,
+                             String table2,
+                             String table2Param,
+                             String condition,
+                             String... columns) {
+        String query = "SELECT ";
+        boolean isFirst = true;
+        for (String column : columns) {
+            if (isFirst) {
+                query += column;
+                isFirst = false;
+            } else {
+                query += ("," + column);
+            }
+        }
+        query += fetchTable + " join " + joiningTable + " on " + joiningTable + "." + joiningTableParam1 + "=" + table1 + "." + table1Param
+                + " join " + table2 + " on " + joiningTable + "." + joiningTableParam2 + "=" + table2 + "." + table2Param
+                + " WHERE " + condition;
+
+        /**join student_course on student_course.S_id = student.id
+         ->join course on student_course.C_id = course.id
+         ->where course.no = student.no;*/
+
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

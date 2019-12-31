@@ -37,3 +37,22 @@
 .title {
     -fx-text-fill: grey;
 }
+.mainBlack{
+    -fx-background-color: #2A2E43;
+    -fx-text-fill: white;
+   /* -fx-background-color: 0xFF2A2E43;*/
+}
+.inputLabel{
+    -fx-text-fill: white;
+}
+.inputField{
+    -fx-background-color: #454F63;
+    -fx-text-fill: white;
+}
+.table-view{
+    -fx-background-color: transparent;
+}
+.checkBox{
+    -fx-background-color: #454F63;
+    -fx-text-fill: white;
+}

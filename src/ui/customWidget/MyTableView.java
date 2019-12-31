@@ -12,6 +12,8 @@ public class MyTableView<T> {
 
     public MyTableView(MyTableColumn... columns) {
         tableView = new TableView<>();
+        tableView.getStyleClass().add("table-view");
+        tableView.getStylesheets().add("./ui/css/label.css");
 
         TableColumn<T, Integer> noColumn = new TableColumn<>("#");
         noColumn.setMaxWidth(30);
@@ -22,8 +24,9 @@ public class MyTableView<T> {
         for (MyTableColumn column : columns) {
 
             TableColumn newColumn = new TableColumn<>(column.getColumnName());
+
             newColumn.setCellValueFactory(new PropertyValueFactory<>(column.getModelAttributeName()));
-            tableView.getColumns().add(newColumn);
+             tableView.getColumns().add(newColumn);
         }
     }
 

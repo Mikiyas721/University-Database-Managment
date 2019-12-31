@@ -20,6 +20,8 @@ public class RegistrarPage {
             @Override
             public void start(Stage primaryStage) throws Exception {
                 BorderPane window = new BorderPane();
+                window.getStyleClass().add("mainBlack");
+                window.getStylesheets().add("./ui/css/label.css");
                 ToolBar toolBar = new ToolBar();
                 new StudentWindow(window, toolBar);
 
