@@ -2,13 +2,121 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added joinAndFetch Method">
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assets/AAU-Header_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assets/back_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assets/campus.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assets/campus1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assets/class.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Account/SchoolAdminAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Account/StudentAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Account/TeacherAccount.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Finance.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/IT.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Program.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Schedule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/TuitionFee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/Validation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/ComboList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/LoginDialog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/PasswordChangeDialog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/RadioButtonGrid.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/SearchTool.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/Registrar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/SchoolAdmin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/Student.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/Teacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/Student/CourseList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/Student/GradeReport.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/Student/ScheduleList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/Student/StudentPage$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/Student/StudentPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/admin/FinancePage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/admin/SchedulePage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/admin/SchoolAdminPage$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/admin/SchoolAdminPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/CourseWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/TeacherWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/teacher/CourseWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/teacher/GradeWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/teacher/ScheduleWindow.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/teacher/TeacherPage$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/teacher/TeacherPage.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/AAU-Header_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/back_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/campus.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/campus1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/class.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Account/SchoolAdminAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Account/StudentAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Account/TeacherAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Finance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/IT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Schedule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/TuitionFee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/Validation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/customWidget/ComboList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/customWidget/LoginDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/customWidget/PasswordChangeDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/customWidget/RadioButtonGrid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/customWidget/SearchTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/admin/Registrar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/admin/SchoolAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/admin/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/admin/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/Student/CourseList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/Student/GradeReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/Student/ScheduleList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/Student/StudentPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/admin/FinancePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/admin/SchedulePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/admin/SchoolAdminPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/registrar/CourseWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/registrar/TeacherWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/teacher/CourseWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/teacher/GradeWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/teacher/ScheduleWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/pages/customer/teacher/TeacherPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/University.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/University.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/assistingclasses/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/assistingclasses/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/database/DataBaseManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/database/DataBaseManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Account/RegistrarAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Account/RegistrarAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Grade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Grade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/faculty/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/models/faculty/Teacher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/css/label.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/css/label.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/CheckBoxGrid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/Inputs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/Inputs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/MyTableView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/customWidget/MyTableView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/MainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/MainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/AdminPage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/AdminPage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/AdminPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/admin/AdminPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/LogIn$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/LogIn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/RegistrarPage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/RegistrarPage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/RegistrarPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/RegistrarPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/StudentWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/University DataBase Managment System/ui/pages/customer/registrar/StudentWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assistingclasses/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/assistingclasses/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/DataBaseManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DataBaseManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Account/RegistrarAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Account/RegistrarAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/faculty/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/faculty/Teacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/css/label.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/css/label.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/customWidget/CheckBoxGrid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/customWidget/Inputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/customWidget/Inputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/customWidget/MyTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/customWidget/MyTableView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/pages/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/pages/MainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/pages/admin/AdminPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/pages/admin/AdminPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/pages/customer/LogIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/pages/customer/registrar/RegistrarPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/pages/customer/registrar/RegistrarPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/pages/customer/registrar/StudentWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/pages/customer/registrar/StudentWindow.java" afterDir="false" />
     </list>
     <list id="f9f724e7-3e13-4755-87a0-dd11291cc7b5" name="Changelist2" comment="" />
     <ignored path="JavaFxApplication.iws" />
@@ -119,7 +227,7 @@
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.38" value="2" />
-          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.42" value="2" />
           <entry key="project.open.time.44" value="1" />
@@ -131,17 +239,17 @@
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.66" value="1" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/registrar/StudentWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
+            <state relative-caret-position="50">
               <caret line="242" column="30" selection-start-line="242" selection-start-column="30" selection-end-line="242" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -150,19 +258,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/LogIn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assistingclasses/MyTableColumn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="200">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
@@ -171,11 +270,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="220">
               <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -183,8 +279,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/pages/admin/AdminPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+            <state relative-caret-position="1360">
+              <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -195,8 +291,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1751">
+            <state relative-caret-position="2100">
               <caret line="151" selection-start-line="151" selection-end-line="151" />
+              <folding>
+                <element signature="e#3354#3355#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -204,7 +303,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/css/label.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="40">
               <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
             </state>
           </provider>
@@ -213,8 +312,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/customWidget/MyTableView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+            <state relative-caret-position="380">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -222,7 +321,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assistingclasses/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="140">
               <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
@@ -231,7 +330,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/registrar/RegistrarPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="340">
               <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -428,9 +527,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -681,6 +780,7 @@
       <workItem from="1578064256276" duration="2697000" />
       <workItem from="1578109398685" duration="16000" />
       <workItem from="1578175359882" duration="922000" />
+      <workItem from="1580851734291" duration="372000" />
     </task>
     <task id="LOCAL-00001" summary="Added Basic Model classes">
       <created>1573859325474</created>
@@ -826,12 +926,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159754000" />
+    <option name="totallyTimeSpent" value="160126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21255673" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21558245" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" weight="0.32980332" />
       <window_info id="Designer" order="3" />
@@ -853,7 +953,7 @@
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.20819671" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32786885" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="15" weight="0.34262297" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="15" visible="true" weight="0.34262297" />
       <window_info anchor="bottom" id="Thumbnails" order="16" weight="0.3295082" />
       <window_info anchor="bottom" id="Docker" order="17" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1153,9 +1253,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/LogIn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/registrar/StudentWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
+        <state relative-caret-position="50">
           <caret line="242" column="30" selection-start-line="242" selection-start-column="30" selection-end-line="242" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1165,25 +1272,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assistingclasses/MyTableColumn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="200">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DataBaseManagement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="220">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/pages/admin/AdminPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
+        <state relative-caret-position="1360">
+          <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1192,46 +1296,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
+        <state relative-caret-position="2100">
           <caret line="151" selection-start-line="151" selection-end-line="151" />
+          <folding>
+            <element signature="e#3354#3355#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/css/label.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state relative-caret-position="40">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/customWidget/MyTableView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="380">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assistingclasses/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="140">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/registrar/RegistrarPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="340">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/pages/customer/LogIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
         </state>
       </provider>
     </entry>
