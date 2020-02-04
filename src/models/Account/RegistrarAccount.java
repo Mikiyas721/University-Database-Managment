@@ -1,7 +1,5 @@
 package models.Account;
 
-import models.Account.Account;
-
 public class RegistrarAccount extends Account {
     private String firstName;
     private String lastName;

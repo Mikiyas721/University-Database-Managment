@@ -1,6 +1,7 @@
 package models.faculty;
 
 import models.Sex;
+
 import java.time.LocalDate;
 
 
@@ -9,25 +10,28 @@ public class Teacher extends Staff {
 
     private String rank;
     private int department_Id;
-   /* private int courses_Id; //TODO These fields have already been mapped to their own table
-                                 so they no longer belong here
-    private int sections_Id;*/
+    private int courses_Id;
+    /**
+     * These fields have already been mapped to their own table
+     * so they no longer belong here
+     */
+    private int sections_Id;
 
     public Teacher(
             String firstName,
             String lastName,
             String id,
-            LocalDate dateOfBirth,
             Sex sex,
+            LocalDate dateOfBirth,
             int phoneNumber,
-            int houseNo,
-            String street,
-            String subCity,
             String city,
+            String subCity,
+            String street,
+            int houseNo,
             double salary,
             String officeNumber,
-            String rank,
-            int department_Id) {
+            String rank
+    ) {
         super(
                 id,
                 firstName,
@@ -42,7 +46,7 @@ public class Teacher extends Staff {
                 salary,
                 officeNumber);
         this.rank = rank;
-        this.department_Id = department_Id;
+        /* this.department_Id = department_Id;*/
     }
 
     public String getRank() {

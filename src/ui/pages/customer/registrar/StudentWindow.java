@@ -12,12 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import models.Program;
 import models.Student;
-import ui.customWidget.CheckBoxGrid;
-import ui.customWidget.Inputs;
-import ui.customWidget.MyTableView;
-import ui.customWidget.MyTextField;
+import ui.Validation;
+import ui.customWidget.*;
+
+import javax.naming.directory.SearchResult;
+
 
 public class StudentWindow {
     private BorderPane window;
@@ -34,49 +34,63 @@ public class StudentWindow {
         setWindowRight();
     }
 
-    public void setWindowTop(ToolBar toolBar) {
-        ObservableList<String> department = FXCollections.observableArrayList();
-        department.addAll("SECE", "SCEE", "SMIE");
-
-        CheckBoxGrid checkBox = new CheckBoxGrid(
-                Constants.STUDENT_INPUTS[0],
-                Constants.STUDENT_INPUTS[1],
-                Constants.STUDENT_INPUTS[2],
-                Constants.STUDENT_INPUTS[3],
-                Constants.STUDENT_INPUTS[4],
-                Constants.STUDENT_INPUTS[5],
-                Constants.STUDENT_INPUTS[6],
-                Constants.STUDENT_INPUTS[7],
-                Constants.STUDENT_INPUTS[8],
-                Constants.STUDENT_INPUTS[9],
-                Constants.STUDENT_INPUTS[10]
-        );
-        TextField search = new TextField();
-        search.setMinWidth(400);
-        search.setPromptText("Search");
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
-                }
-                /*searchResults.setItem(DataBaseManagement.getInstance().fetchWithCondition(getComparingColumn(getSelectedCheckBox()), newValue))*/
-        );
-
-        HBox searchRow = new HBox();
-        searchRow.setSpacing(5);
-        searchRow.getChildren().addAll(search, checkBox.getCheckBoxGrid());
-
-        VBox searchBar = new VBox(searchRow, new Separator());
-        searchBar.setPadding(new Insets(10, 0, 0, 10));
-
-        window.setTop(new VBox(toolBar, searchBar));
-
+    private void setWindowTop(ToolBar toolBar) {
+        SearchTool searchTool = new SearchTool(Constants.STUDENT_INPUTS);
+        searchTool.setOnSearch((observable, oldValue, newValue) -> {
+            searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition(Constants.getComparingColumn(searchTool.getSelectedRadioButton()), newValue));
+        });
+        window.setTop(new VBox(toolBar, searchTool.getSearchBar()));
     }
 
-    public void setWindowRight() {
+    private void setWindowRight() {
 
         ScrollPane scrollPane = new ScrollPane();
         VBox mainBox = new VBox(5);
-        addNew = new Inputs("Add new student", "Submit", event -> onSubmitButtonClicked(), Constants.STUDENT_INPUTS
+        addNew = new Inputs("Add new student",
+                event -> onSubmitButtonClicked(),
+                "Submit",
+                Constants.STUDENT_INPUTS
         );
-        editExisting = new Inputs("Edit student information", "Edit", event -> onEditButtonClicked(), Constants.STUDENT_INPUTS);
+        addNew.getColleges().valueProperty().addListener((observable, oldValue, newValue) -> {
+            addNew.getDepartment().setItems(DataBaseManagement.getInstance().fetchDepartmentWithCondition("collegeId", newValue));
+            addNew.getProgram().setDisable(true);
+            addNew.getYear().setDisable(true);
+            addNew.getSection().setDisable(true);
+
+            addNew.getProgram().setItems(null);
+            addNew.getYear().setItems(null);
+            addNew.getSection().setItems(null);
+            addNew.getDepartment().setDisable(false);
+        });
+        addNew.getDepartment().valueProperty().addListener((observable, oldValue, newValue) -> {
+            addNew.getProgram().setItems(DataBaseManagement.getInstance().fetchProgramWithCondition("departmentId", newValue));
+            addNew.getYear().setDisable(true);
+            addNew.getSection().setDisable(true);
+
+            addNew.getYear().setItems(null);
+            addNew.getSection().setItems(null);
+            addNew.getProgram().setDisable(false);
+        });
+        addNew.getProgram().valueProperty().addListener((observable, oldValue, newValue) -> {
+            addNew.getYear().setItems(DataBaseManagement.getInstance().fetchYearsOfProgram("programId", newValue));
+            addNew.getSection().setDisable(true);
+
+            addNew.getSection().setItems(null);
+            addNew.getYear().setDisable(false);
+        });
+        addNew.getYear().valueProperty().addListener((observable, oldValue, newValue) -> {
+            addNew.getSection().setItems(DataBaseManagement.getInstance().fetchSectionWithCondition("year", Integer.toString(newValue)));
+            addNew.getSection().setDisable(false);
+        });
+
+        editExisting = new Inputs("Edit student information",
+                event -> onEditButtonClicked(),
+                "Edit",
+                Constants.STUDENT_INPUTS);
+
+        editExisting.getColleges().valueProperty().addListener((observable, oldValue, newValue) -> {
+            editExisting.getDepartment().setItems(DataBaseManagement.getInstance().fetchDepartmentWithCondition("collegeId", newValue));
+        });
 
         VBox deleteAccount = new VBox(5);
         deleteAccount.setPadding(new Insets(10));
@@ -105,47 +119,65 @@ public class StudentWindow {
         window.setRight(scrollPane);
     }
 
-    public void setWindowLeft() {
-        ObservableList<String> collage = FXCollections.observableArrayList();
-        collage.addAll("AAIT","CNCS","CBE","CDS","CEBS","CHS","CHLJC","CLGS","CSS","CVMA","CPVA");
+    private void setWindowLeft() {
+        ComboList comboList = new ComboList();
+        comboList.setUPComboList((observable, oldValue, newValue) -> {
+                    comboList.getDepartments().setItems
+                            (DataBaseManagement.getInstance().fetchDepartmentWithCondition("collegeId", newValue));
+                    comboList.getDepartments().setDisable(false);
+                    comboList.getPrograms().setDisable(true);
+                    comboList.getYears().setDisable(true);
+                    comboList.getSections().setDisable(true);
 
-        ObservableList<String> department = FXCollections.observableArrayList();
-        department.addAll("SECE", "SCEE", "SMIE");
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition("collegeId", newValue));
+                },
+                (observable, oldValue, newValue) -> {
+                    comboList.getPrograms().setItems
+                            (DataBaseManagement.getInstance().fetchProgramWithCondition("departmentId", newValue));
+                    comboList.getPrograms().setDisable(false);
+                    comboList.getYears().setDisable(true);
+                    comboList.getSections().setDisable(true);
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition
+                            ("collegeId = '" + comboList.getCollages().getValue() + "' AND departmentId = '" + newValue + "'"));
+                },
+                (observable, oldValue, newValue) -> {
+                    comboList.getYears().setItems(DataBaseManagement.getInstance().fetchYearsOfProgram("programId", newValue));
+                    comboList.getYears().setDisable(false);
+                    comboList.getSections().setDisable(true);
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition
+                            ("collegeId = '" + comboList.getCollages().getValue() + "' AND departmentId = '" + comboList.getDepartments().getValue() +
+                                    "' AND programId = '" + newValue + "'"));
 
-        ObservableList<Program> program = FXCollections.observableArrayList();
-        program.addAll(Program.Under_Grad,Program.Grad,Program.Post_Grad);
+                },
+                (observable, oldValue, newValue) -> {
+                    comboList.getSections().setItems(DataBaseManagement.getInstance().fetchSectionWithCondition("year", Integer.toString(newValue)));
+                    comboList.getSections().setDisable(false);
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition
+                            ("collegeId = '" + comboList.getCollages().getValue() + "' AND departmentId = '" + comboList.getDepartments().getValue() +
+                                    "' AND programId = '" + comboList.getPrograms().getValue() + "' AND year = " + newValue));
+                },
+                (observable, oldValue, newValue) -> {
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchStudentWithCondition
+                            ("collegeId = '" + comboList.getCollages().getValue() + "' AND departmentId = '" + comboList.getDepartments().getValue() +
+                                    "' AND programId = '" + comboList.getPrograms().getValue() + "' AND year = " + comboList.getYears().getValue() +
+                                    " AND sectionId = '" + comboList.getSections().getValue() + "'"));
 
-        ObservableList<Integer> year = FXCollections.observableArrayList();
-        year.addAll(1,2,3,4,5);
-
-        ObservableList<String> section = FXCollections.observableArrayList();
-        section.addAll("A","B","C","D");
-
-        VBox vBox = new VBox(10);
-        vBox.setPadding(new Insets(10));
-        vBox.setMinWidth(100);
-
-        ComboBox<String> collages = new ComboBox<>(collage);
-        collages.setPromptText("Collage");
-
-        ComboBox<String> departments = new ComboBox<>(department);
-        departments.setPromptText("Department");
-
-        ComboBox<Program> programs = new ComboBox<>(program);
-        programs.setPromptText("Program");
-
-        ComboBox<Integer> years = new ComboBox<>(year);
-        years.setPromptText("Year");
-
-        ComboBox<String> sections = new ComboBox<>(section);
-        sections.setPromptText("Section");
-
-
-        vBox.getChildren().addAll(collages,departments, programs, years, sections);
-        window.setLeft(vBox);
+                }, event -> {
+                    comboList.getCollages().setValue(null);
+                    comboList.getDepartments().setValue(null);
+                    comboList.getDepartments().setDisable(true);
+                    comboList.getPrograms().setValue(null);
+                    comboList.getPrograms().setDisable(true);
+                    comboList.getYears().setValue(null);
+                    comboList.getYears().setDisable(true);
+                    comboList.getSections().setValue(null);
+                    comboList.getSections().setDisable(true);
+                    searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+                });
+        window.setLeft(comboList.getComboList());
     }
 
-    public void setWindowCenter() {
+    private void setWindowCenter() {
         searchResults = new MyTableView<>(
                 new MyTableColumn("First Name", "firstName"),
                 new MyTableColumn("Last Name", "lastName"),
@@ -165,79 +197,59 @@ public class StudentWindow {
                 new Column("lastName", "String", 15),
                 new Column("id", "String", 15),
                 new Column("sex", "String", 7),
-                new Column("year", "Int", 15),
                 new Column("dataOfBirth", "String", 15),
                 new Column("phoneNumber", "Int", 15),
                 new Column("city", "String", 10),
                 new Column("subCity", "String", 10),
                 new Column("street", "String", 10),
-                new Column("houseNo", "Int", 10)
+                new Column("houseNo", "Int", 10),
+                new Column("collegeId", "String", 10),
+                new Column("departmentId", "String", 10),
+                new Column("programId", "String", 10),
+                new Column("year", "Int", 15),
+                new Column("sectionId", "String", 10)
         );
 
         try {
             searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
         } catch (NullPointerException e) {
-            System.out.println("Empty StudentWindow List");
+            searchResults.setItem(null);
         }
         window.setCenter(searchResults.getTableView());
-
-    }
-
-   /* public Application getSearchPage() {
-        return searchPage;
-    }*/
-
-   /* public void setClickedCheckBox(CheckBox selectedCheckBox) {
-        for (CheckBox checkBox : checkBoxArray) {
-            if (checkBox == selectedCheckBox) continue;
-            checkBox.setSelected(false);
-        }
-    }
-
-    public void initializeCheckBox() {
-        for (CheckBox checkBox : checkBoxArray) {
-            checkBox.setOnMouseClicked(event -> {
-                setClickedCheckBox(checkBox);
-            });
-        }
-    }*/
-
-   /* public int getSelectedCheckBox() {
-        for (int i = 0; i < 7; i++) {
-            if (checkBoxArray[i].isSelected()) {
-                return i;
-            }
-        }
-        return 0;
-    }*/
-
-    public String getComparingColumn(int i) {
-        if (i == 1) return "lastName";
-        else if (i == 2) return "id";
-        else if (i == 3) return "sex";
-        else if (i == 4) return "dob";
-        else if (i == 5) return "address";
-        else if (i == 6) return "year";
-        else if (i == 7) return "phoneNumber";
-        else return "firstName";
     }
 
     private void onSubmitButtonClicked() {
+        //TODO check if combo box values have been selected
+        if (Validation.validateName(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[0])) != null ||
+                Validation.validateName(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[1])) != null) {
+            addNew.setMessage(Validation.validateName(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[0])));
+        } else if (Validation.validateId(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[2])) != null)
+            addNew.setMessage(Validation.validateId(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[2])));
+        else if (Validation.validateDob(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[4])) != null)
+            addNew.setMessage(Validation.validateDob(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[4])));
+        else if (Validation.validatePhone(Integer.parseInt(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[5]))) != null)
+            addNew.setMessage(Validation.validatePhone(Integer.parseInt(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[5]))));
+        else {
+            DataBaseManagement.getInstance().insertDataIntoTable("Student",
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[0]), "firstName"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[1]), "lastName"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[2]), "id"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[3]), "sex"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "dataOfBirth"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "phoneNumber"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "city"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "subCity"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "street"),
+                    new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "houseNo"),
+                    new ColumnValue(addNew.getColleges().getValue(), "collegeId"),
+                    new ColumnValue(addNew.getDepartment().getValue(), "departmentId"),
+                    new ColumnValue(addNew.getProgram().getValue(), "programId"),
+                    new ColumnValue(addNew.getYear().getValue(), "year"),
+                    new ColumnValue<>(addNew.getSection().getValue(), "sectionId")
 
-        DataBaseManagement.getInstance().insertDataIntoTable("Student",
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[0]), "firstName"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[1]), "lastName"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[2]), "id"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[3]), "sex"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "year"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "dataOfBirth"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "phoneNumber"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "city"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "subCity"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "street"),
-                new ColumnValue(addNew.getTextFieldValue(Constants.STUDENT_INPUTS[10]), "houseNo")
-        );
-       searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
+            );
+        }
+        searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
     }
 
     private void onEditButtonClicked() {
@@ -247,13 +259,17 @@ public class StudentWindow {
                 new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[1]), "lastName"),
                 new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[2]), "id"),
                 new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[3]), "sex"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "year"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "dataOfBirth"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "phoneNumber"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "city"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "subCity"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "street"),
-                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[10]), "houseNo")
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[4]), "dataOfBirth"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[5]), "phoneNumber"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[6]), "city"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[7]), "subCity"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[8]), "street"),
+                new ColumnValue<>(editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[9]), "houseNo"),
+                new ColumnValue<>(editExisting.getColleges().getValue(), "collegeId"),
+                new ColumnValue<>(editExisting.getDepartment().getValue(), "departmentId"),
+                new ColumnValue<>(editExisting.getProgram().getValue(), "programId"),
+                new ColumnValue<>(editExisting.getYear().getValue(), "year"),
+                new ColumnValue<>(editExisting.getSection().getValue(), "sectionId")
 
         );
         searchResults.setItem(DataBaseManagement.getInstance().fetchColumnsFromStudent("*"));
@@ -267,13 +283,25 @@ public class StudentWindow {
             editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[1], student.getLastName());
             editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[2], student.getId());
             editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[3], student.getSex().toString());
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[4], Integer.toString(student.getYear()));
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[5], models.Student.getLocalDateString(student.getDataOfBirth()));
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[6], Integer.toString(student.getPhoneNumber()));
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[7], student.getCity());
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[8], student.getSubCity());
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[9], student.getStreet());
-            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[10], Integer.toString(student.getHouseNo()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[4], Constants.getLocalDateString(student.getDataOfBirth()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[5], Integer.toString(student.getPhoneNumber()));
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[6], student.getCity());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[7], student.getSubCity());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[8], student.getStreet());
+            editExisting.setTextFieldValue(Constants.STUDENT_INPUTS[9], Integer.toString(student.getHouseNo()));
+            editExisting.getColleges().setValue(student.getCollegeId());
+            editExisting.getDepartment().setValue(student.getDepartmentId());
+            editExisting.getProgram().setValue(student.getProgramId());
+            editExisting.getSection().setValue(student.getSectionId());
+            editExisting.getYear().setValue(student.getYear());
+            editExisting.getDepartment().setDisable(false);
+            editExisting.getProgram().setDisable(false);
+            editExisting.getYear().setDisable(false);
+            editExisting.getSection().setDisable(false);
+            editExisting.getDepartment().setItems(DataBaseManagement.getInstance().fetchDepartmentWithCondition("collegeId", student.getCollegeId()));
+            editExisting.getProgram().setItems(DataBaseManagement.getInstance().fetchProgramWithCondition("departmentId", student.getDepartmentId()));
+            editExisting.getYear().setItems(DataBaseManagement.getInstance().fetchYearsOfProgram("programId", student.getProgramId()));
+            editExisting.getSection().setItems(DataBaseManagement.getInstance().fetchSectionWithCondition("year", Integer.toString(student.getYear())));
             id = editExisting.getTextFieldValue(Constants.STUDENT_INPUTS[2]);
         });
     }

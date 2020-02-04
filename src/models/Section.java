@@ -20,7 +20,7 @@ public class Section {
     public Section(
             char sectionCode,
             int year
-            /*ObservableList<Course> courseList,
+            /*ObservableList<CourseWindow> courseList,
             ObservableList<Teacher> teachersList*/) {
         this.sectionCode = sectionCode;
         this.year = year;

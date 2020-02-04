@@ -8,29 +8,36 @@ public class Student {
     private String firstName;
     private String lastName;
     private Sex sex;
-    private int year;
     private int phoneNumber;
     private LocalDate dataOfBirth;
     private int houseNo;
     private String street;
     private String subCity;
     private String city;
+    private String collegeId;
     private String departmentId;
+    private String programId;
+    private int year;
+    private String sectionId;
 
-    public Student(
-            String firstName,
-            String lastName,
-            String id,
-            Sex sex,
-            int year,
-            LocalDate dataOfBirth,
-            int phoneNumber,
-            String city,
-            String subCity,
-            String street,
-            int houseNo
+    public Student(//TODO overload constructor if this isn't used by the filters
+                   String firstName,
+                   String lastName,
+                   String id,
+                   Sex sex,
+                   LocalDate dataOfBirth,
+                   int phoneNumber,
+                   String city,
+                   String subCity,
+                   String street,
+                   int houseNo,
+                   String collegeId,
+                   String departmentId,
+                   String programId,
+                   int year,
+                   String sectionId
 
-            /*String departmentId*/) {
+    ) {
 
         this.id = id;
         this.firstName = firstName;
@@ -43,7 +50,10 @@ public class Student {
         this.street = street;
         this.subCity = subCity;
         this.city = city;
-        /*     this.departmentId = departmentId;*/
+        this.collegeId = collegeId;
+        this.departmentId = departmentId;
+        this.programId = programId;
+        this.sectionId = sectionId;
     }
 
     public String getId() {
@@ -142,18 +152,30 @@ public class Student {
         this.departmentId = departmentId;
     }
 
-    public static String getLocalDateString(LocalDate localDate) {
-        return localDate.getDayOfMonth() + "/" + localDate.getMonthValue() + "/" + localDate.getYear();
+    public String getCollegeId() {
+        return collegeId;
     }
 
-    public static LocalDate getLocalDateFromString(String dateString) {
-        try {
-            String[] dateArray = dateString.split("/");
-            return LocalDate.of(Integer.parseInt(dateArray[2]), Integer.parseInt(dateArray[1]), Integer.parseInt(dateArray[0]));
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Index out of Bound in Student getLocalDateFromString method");
-        }
-        return null;
+    public void setCollegeId(String collegeId) {
+        this.collegeId = collegeId;
     }
+
+    public String getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(String programId) {
+        this.programId = programId;
+    }
+
+    public String getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
+    }
+
+
 
 }
